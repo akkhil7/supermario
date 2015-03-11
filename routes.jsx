@@ -8,12 +8,10 @@ var NotFoundRoute = Router.NotFoundRoute;
 
 /* Components */
 var App      = require('./components/App.jsx');
-var Index    = require('./components/Index.jsx');
 var NotFound = require('./components/NotFound.jsx');
 
 var routes = (
   <Route name="places" path="/" handler={App}>
-    <DefaultRoute name="index" handler={Index} />
     <NotFoundRoute name="notfound" handler={ NotFound }/>
   </Route>
 );
