@@ -45,7 +45,7 @@ app.use(function (err, req, res, next) {
   res.send('<pre>' + err.stack + '</pre>');
 });
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 4200);
 
 app.listen(app.get('port'), function () {
   debug('Express ' + app.get('env') + ' server listening on port ' + this.address().port);
