@@ -217,85 +217,88 @@ body {
   padding: 0;
   height: 100%; }
 
-#contentWrapper {
+.content {
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 100%;
   height: 100%; }
-  #contentWrapper:last-child {
+  .content:last-child {
     margin-right: 0; }
-  #contentWrapper .sidebar {
+
+.sidebar {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 31.76157%;
+  background-color: #3c444d;
+  min-height: 100%;
+  height: auto; }
+  .sidebar:last-child {
+    margin-right: 0; }
+  .sidebar .logo {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 31.76157%;
-    background-color: #3c444d;
-    min-height: 100%;
-    height: auto; }
-    #contentWrapper .sidebar:last-child {
+    margin-right: 7.42297%;
+    width: 46.28851%;
+    margin-left: 26.85574%;
+    font-weight: 100;
+    font-size: 2.5em;
+    text-align: center;
+    color: white; }
+    .sidebar .logo:last-child {
       margin-right: 0; }
-    #contentWrapper .sidebar logo {
-      float: left;
-      display: block;
-      margin-right: 7.42297%;
-      width: 46.28851%;
-      margin-left: 26.85574%;
-      font-weight: 100;
-      font-size: 2.5em;
-      text-align: center;
-      color: white; }
-      #contentWrapper .sidebar logo:last-child {
-        margin-right: 0; }
-    #contentWrapper .sidebar p {
-      float: left;
-      display: block;
-      margin-right: 7.42297%;
-      width: 100%;
-      text-align: center;
-      color: white; }
-      #contentWrapper .sidebar p:last-child {
-        margin-right: 0; }
-    #contentWrapper .sidebar .avatar {
-      float: left;
-      display: block;
-      margin-right: 7.42297%;
-      width: 100%;
-      text-align: center;
-      padding: 10px 0 10px 0; }
-      #contentWrapper .sidebar .avatar:last-child {
-        margin-right: 0; }
-      #contentWrapper .sidebar .avatar img {
-        -webkit-border-radius: 99em;
-        -moz-border-radius: 99em;
-        border-radius: 99em;
-        border: 5px solid white;
-        box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3); }
-  #contentWrapper .content {
+  .sidebar p {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 65.88078%;
-    height: 100%;
-    margin: 0; }
-    #contentWrapper .content:last-child {
+    margin-right: 7.42297%;
+    width: 100%;
+    text-align: center;
+    color: white; }
+    .sidebar p:last-child {
       margin-right: 0; }
-  #contentWrapper .projects-box {
+  .sidebar .avatar {
     float: left;
     display: block;
-    margin-right: 2.35765%;
-    width: 48.82117%;
-    margin-left: 8.5298%; }
-    #contentWrapper .projects-box:last-child {
+    margin-right: 7.42297%;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0 10px 0; }
+    .sidebar .avatar:last-child {
       margin-right: 0; }
-    #contentWrapper .projects-box input {
-      float: left;
-      display: block;
-      margin-right: 4.82916%;
-      width: 47.58542%;
-      margin-left: 17.47153%; }
-      #contentWrapper .projects-box input:last-child {
-        margin-right: 0; }
+    .sidebar .avatar img {
+      -webkit-border-radius: 99em;
+      -moz-border-radius: 99em;
+      border-radius: 99em;
+      border: 5px solid white;
+      box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3); }
+
+.main {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 65.88078%;
+  height: 100%;
+  margin: 0; }
+  .main:last-child {
+    margin-right: 0; }
+
+.projects-box {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  margin-left: 8.5298%; }
+  .projects-box:last-child {
+    margin-right: 0; }
+  .projects-box input {
+    float: left;
+    display: block;
+    margin-right: 4.82916%;
+    width: 47.58542%;
+    margin-left: 17.47153%; }
+    .projects-box input:last-child {
+      margin-right: 0; }
 
 .projects-blank {
   float: left;
@@ -326,38 +329,5 @@ body {
     margin-left: 25.89467%; }
     .add-a-project button:last-child {
       margin-right: 0; }
-
-#wrapper {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 100%;
-  padding: 10em; }
-  #wrapper:last-child {
-    margin-right: 0; }
-  #wrapper .register {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 74.41059%;
-    margin-left: 12.79471%; }
-    #wrapper .register:last-child {
-      margin-right: 0; }
-    #wrapper .register input {
-      float: left;
-      display: block;
-      margin-right: 3.16844%;
-      width: 54.14736%;
-      margin-left: 22.92632%; }
-      #wrapper .register input:last-child {
-        margin-right: 0; }
-    #wrapper .register label {
-      float: left;
-      display: block;
-      margin-right: 3.16844%;
-      width: 31.22104%;
-      margin-left: 22.92632%; }
-      #wrapper .register label:last-child {
-        margin-right: 0; }
 
 /*# sourceMappingURL=main.css.map */

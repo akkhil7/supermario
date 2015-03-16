@@ -1,9 +1,7 @@
 @import "bourbon/bourbon";
 @import "neat/neat";
 @import "base/base";
-
 $primarycolor: #3c444d;
-
 html {
   height: 100%;
 }
@@ -14,41 +12,44 @@ body {
   height: 100%;
 }
 
-#contentWrapper {
+.content {
   @include span-columns(12 of 12);
   height: 100%;
-  .sidebar {
-    @include span-columns(4 of 12);
-    background-color: $primarycolor;
-    min-height: 100%;
-    height: auto;
-    logo {
-      @include span-columns(2 of 4);
-      @include shift(1);
-      font-weight: 100;
-      font-size: 2.5em;
-      text-align: center;
-      color: white;
-    }
-    p {
-      @include span-columns(4 of 4);
-      text-align: center;
-      color: white;
-    }
-    .avatar {
-      @include span-columns(4 of 4);
-      text-align: center;
-      padding: 10px 0 10px 0;
-      img {
-        -webkit-border-radius: 99em;
-        -moz-border-radius: 99em;
-        border-radius: 99em;
-        border: 5px solid white;
-        box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3);
-      }
-    }
+}
+.sidebar {
+  @include span-columns(4 of 12);
+  background-color: $primarycolor;
+  min-height: 100%;
+  height: auto;
+
+  .logo {
+    @include span-columns(2 of 4);
+    @include shift(1);
+    font-weight: 100;
+    font-size: 2.5em;
+    text-align: center;
+    color: white;
   }
-  .content {
+  p {
+    @include span-columns(4 of 4);
+    text-align: center;
+    color: white;
+  }
+  .avatar {
+    @include span-columns(4 of 4);
+    text-align: center;
+    padding: 10px 0 10px 0;
+
+    img {
+      -webkit-border-radius: 99em;
+      -moz-border-radius: 99em;
+      border-radius: 99em;
+      border: 5px solid white;
+      box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3);
+    }
+   }
+ }
+  .main {
     @include span-columns(8 of 12);
     height: 100%;
     margin: 0;
@@ -56,13 +57,12 @@ body {
   .projects-box {
     @include span-columns(6 of 12);
     @include shift(1);
+
     input {
       @include span-columns(3 of 6);
       @include shift(1);
+         }
     }
-  }
-}
-
 .projects-blank {
   @include span-columns(12 of 12);
   text-align: center;
@@ -82,19 +82,3 @@ body {
   }
 }
 
-#wrapper {
-  @include span-columns(12 of 12);
-  padding: 10em;
-  .register {
-    @include span-columns(9 of 12);
-    @include shift(1.5);
-    input {
-      @include span-columns(5 of 9);
-      @include shift(2);
-    }
-    label {
-      @include span-columns(3 of 9);
-      @include shift(2);
-    }
-  }
-}

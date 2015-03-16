@@ -11,7 +11,7 @@ var App      = require('./components/App.jsx');
 var NotFound = require('./components/NotFound.jsx');
 
 var routes = (
-  <Route name="places" path="/" handler={App}>
+  <Route name="app" path="/" handler={App}>
     <NotFoundRoute name="notfound" handler={ NotFound }/>
   </Route>
 );
