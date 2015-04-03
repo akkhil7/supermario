@@ -11,7 +11,7 @@ var Request       = require('superagent')
 var _             = require('lodash')
 
 //import components
-var ProjectBox    = require('./projectBox.js.jsx');
+var ProjectBox    = require('./ProjectBox.jsx');
 
 var ProjectList = React.createClass({
   getInitialState: function(){
@@ -64,12 +64,12 @@ var ProjectList = React.createClass({
     var _this = this;
     var projects = this.props.projects;
     if(projects.length>0){
-      var display=<div className="project-list">
-           Projects ({projects.length})
-           {projects.map(function(project){
-              return <ProjectBox deleted={_this.deleteProject} project={project} />
-           })}
-        </div>
+      var display = <div className="project-list">
+                    Projects ({projects.length})
+                    {projects.map(function(project){
+                    return <ProjectBox deleted={_this.deleteProject} project={project} />
+                    })}
+                    </div>
     }
 
     return (

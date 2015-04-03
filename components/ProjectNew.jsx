@@ -10,34 +10,38 @@ var Link          = Router.Link;
 var Request       = require('superagent')
 var _             = require('lodash')
 
-var NewProject = React.createClass({
+var ProjectList = require('./ProjectList.jsx');
+
+var ProjectNew = React.createClass({
+  mixins: [Router.Navigation],
+
   addProject: function () { 
     var project = {
       name: this.refs.name.getDOMNode().value
     };
-
-    console.log(project);
     var _this = this;
     url       = "http://localhost:3000/projects";
-
+    
     Request
     .post(url)
     .send({ project: project })
     .end(function (err, res){
       console.log(res);
-    })
-
+      })
+    this.transitionTo('projects')
   },
+
   render: function () {
     return (
       <div className="add-a-project">
         <input type="text" placeholder="Name your project" ref="name" />
 
         <button onClick={this.addProject}>Add this project</button>
-        <button className="white" onClick={this.props.cancel}>Cancel</button> /*on click, it accesses 
-        cancel property of NewProject (which is in ProjectBlank - this initiates ToggleAddingProject)*/
+        <button className="white" onClick={this.props.cancel}>Cancel</button> 
       </div>
+      /*on click, it accesses 
+        cancel property of NewProject (which is in ProjectBlank - this initiates ToggleAddingProject)*/
     );
   }
 });
-module.exports = NewProject;
+module.exports = ProjectNew;

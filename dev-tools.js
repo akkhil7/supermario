@@ -7,6 +7,7 @@ var webpackConfig    = require('./webpack.config.dev');
 var livereload       = require('livereload');
 var fs               = require('fs');
 var sass             = require('node-sass');
+var watch            = require('node-watch');
 
 // Run the webpack dev server
 var webpackServer = new WebpackDevServer(webpack(webpackConfig), {
@@ -34,11 +35,12 @@ var renderSass = function(filename) {
 };
 
 // Watch for scss changes
-fs.watch(__dirname + '/style', function (event, filename) {
+watch(__dirname + '/style', function (filename, curr, prev) {
   var ext = filename.split('/').pop().split('.').pop();
-  if (ext !== 'scss') return;
+  if (ext !== 'scss' && ext !== 'sass') return;
   renderSass(filename);
 });
+
 
 // Render for the first run
 renderSass();

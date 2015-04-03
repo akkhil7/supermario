@@ -11,7 +11,7 @@ var Request       = require('superagent')
 var _             = require('lodash')
 
 //import components
-var NewProject    = require('./newProject.js.jsx');
+var ProjectNew    = require('./ProjectNew.jsx');
 
 var ProjectBlank = React.createClass({
   getInitialState: function () {
@@ -26,8 +26,9 @@ var ProjectBlank = React.createClass({
   render: function () {
     var isAdding = this.state.isAdding;
     if (isAdding) {
-      var display = <NewProject cancel={this.toggleAddingProject} />  /*if true then display next step -> 
-      Add button and Cancel button. Sets the cancel property of NewProject */ 
+      /*if true then display next step -> 
+      Add button and Cancel button. Sets the cancel property of ProjectNew */ 
+      var display = <ProjectNew cancel={this.toggleAddingProject} />  
     }
     else {
       var display = <button onClick={this.toggleAddingProject}>Add a new project</button> // o/w display add button

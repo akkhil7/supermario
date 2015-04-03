@@ -209,28 +209,11 @@ button, input[type="submit"] {
   vertical-align: middle;
   white-space: nowrap; }
 
-html {
-  height: 100%; }
-
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%; }
-
-.content {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 100%;
-  height: 100%; }
-  .content:last-child {
-    margin-right: 0; }
-
 .sidebar {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 31.76157%;
+  width: 23.23176%;
   background-color: #3c444d;
   min-height: 100%;
   height: auto; }
@@ -244,44 +227,59 @@ body {
     margin-left: 26.85574%;
     font-weight: 100;
     font-size: 2.5em;
-    text-align: center;
     color: white; }
     .sidebar .logo:last-child {
       margin-right: 0; }
-  .sidebar p {
-    float: left;
-    display: block;
-    margin-right: 7.42297%;
-    width: 100%;
-    text-align: center;
-    color: white; }
-    .sidebar p:last-child {
-      margin-right: 0; }
-  .sidebar .avatar {
+  .sidebar h2 {
+    color: white;
+    text-align: center; }
+  .sidebar .gravatar {
     float: left;
     display: block;
     margin-right: 7.42297%;
     width: 100%;
     text-align: center;
     padding: 10px 0 10px 0; }
-    .sidebar .avatar:last-child {
+    .sidebar .gravatar:last-child {
       margin-right: 0; }
-    .sidebar .avatar img {
+    .sidebar .gravatar img {
       -webkit-border-radius: 99em;
       -moz-border-radius: 99em;
       border-radius: 99em;
       border: 5px solid white;
       box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3); }
-
-.main {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 65.88078%;
-  height: 100%;
-  margin: 0; }
-  .main:last-child {
-    margin-right: 0; }
+  .sidebar .nav {
+    text-align: center; }
+    .sidebar .nav li {
+      color: white;
+      float: left;
+      display: block;
+      margin-right: 10.1484%;
+      width: 100%;
+      padding-top: 5px; }
+      .sidebar .nav li:last-child {
+        margin-right: 0; }
+      .sidebar .nav li a {
+        color: white;
+        float: left;
+        display: block;
+        margin-right: 10.1484%;
+        width: 63.28387%;
+        margin-left: 18.35807%; }
+        .sidebar .nav li a:last-child {
+          margin-right: 0; }
+      .sidebar .nav li a[hover] {
+        color: red; }
+    .sidebar .nav p {
+      color: white;
+      float: left;
+      display: block;
+      margin-right: 10.1484%;
+      width: 63.28387%;
+      margin-left: 18.35807%;
+      padding: 5px 0 5px 0; }
+      .sidebar .nav p:last-child {
+        margin-right: 0; }
 
 .projects-box {
   float: left;
@@ -329,5 +327,124 @@ body {
     margin-left: 25.89467%; }
     .add-a-project button:last-child {
       margin-right: 0; }
+
+.team {
+  padding-top: 20px;
+  float: left;
+  display: block;
+  margin-right: 3.57866%;
+  width: 100%; }
+  .team:last-child {
+    margin-right: 0; }
+  .team span {
+    font-size: 0.9em; }
+  .team .teamlist {
+    float: left;
+    display: block;
+    margin-right: 3.57866%;
+    width: 100%; }
+    .team .teamlist:last-child {
+      margin-right: 0; }
+    .team .teamlist h2 {
+      float: left;
+      display: block;
+      margin-right: 5.85151%;
+      width: 36.4891%; }
+      .team .teamlist h2:last-child {
+        margin-right: 0; }
+    .team .teamlist button {
+      float: left;
+      display: block;
+      margin-right: 3.57866%;
+      width: 22.316%;
+      margin-left: 25.89467%;
+      margin-right: 0;
+      float: right;
+      background-color: #56C455; }
+      .team .teamlist button:last-child {
+        margin-right: 0; }
+    .team .teamlist button:hover {
+      background-color: #379436; }
+    .team .teamlist hr {
+      float: left;
+      display: block;
+      margin-right: 5.85151%;
+      width: 100%; }
+      .team .teamlist hr:last-child {
+        margin-right: 0; }
+  .team .teaminvite {
+    padding: 10em 0;
+    float: left;
+    display: block;
+    margin-right: 3.57866%;
+    width: 61.158%;
+    margin-left: 19.421%; }
+    .team .teaminvite:last-child {
+      margin-right: 0; }
+    .team .teaminvite button {
+      float: left;
+      display: block;
+      margin-right: 5.85151%;
+      width: 57.6594%;
+      margin-left: 21.1703%; }
+      .team .teaminvite button:last-child {
+        margin-right: 0; }
+    .team .teaminvite input {
+      margin-top: 20px; }
+    .team .teaminvite h3 {
+      text-align: center; }
+    .team .teaminvite p {
+      color: #999;
+      text-align: center; }
+    .team .teaminvite .invitebox {
+      float: left;
+      display: block;
+      margin-right: 3.57866%;
+      width: 35.26334%;
+      margin-left: 25.89467%; }
+      .team .teaminvite .invitebox:last-child {
+        margin-right: 0; }
+
+html {
+  height: 100%;
+  background: white; }
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+
+.content {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%;
+  height: 100%; }
+  .content:last-child {
+    margin-right: 0; }
+
+.main {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 65.88078%;
+  height: 100%;
+  margin: 0; }
+  .main:last-child {
+    margin-right: 0; }
+  .main .flash {
+    height: auto;
+    padding: 10px 20px;
+    float: left;
+    display: block;
+    margin-right: 3.57866%;
+    width: 100%;
+    border-radius: 3px; }
+    .main .flash:last-child {
+      margin-right: 0; }
+  .main .flash.error {
+    background-color: #f5b2c0;
+    border-color: #741f31;
+    color: #741f31; }
 
 /*# sourceMappingURL=main.css.map */

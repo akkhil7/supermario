@@ -1,0 +1,43 @@
+$primarycolor: #3c444d
+.sidebar
+  +span-columns(3 of 12)
+  background-color: $primarycolor
+  min-height: 100%
+  height: auto
+  .logo
+    +span-columns(2 of 4)
+    +shift(1)
+    font-weight: 100
+    font-size: 2.5em
+    color: white
+  h2
+    color: white
+    text-align: center
+  .gravatar
+    +span-columns(4 of 4)
+    text-align: center
+    padding: 10px 0 10px 0
+    img
+      -webkit-border-radius: 99em
+      -moz-border-radius: 99em
+      border-radius: 99em
+      border: 5px solid white
+      box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3)
+
+  .nav
+    text-align: center
+    li
+      color: white
+      +span-columns(3 of 3)
+      padding-top: 5px
+      a
+        color: white
+        +span-columns(2 of 3)
+        +shift(0.5)
+      a[hover]
+        color: red
+    p
+      color: white
+      +span-columns(2 of 3)
+      +shift(0.5)
+      padding: 5px 0 5px 0
