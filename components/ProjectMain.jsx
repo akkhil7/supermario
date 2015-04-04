@@ -15,42 +15,14 @@ var ProjectBlank  = require('./ProjectBlank.jsx');
 var ProjectList = require('./ProjectList.jsx');
 
 var ProjectMain = React.createClass({
-
-  getInitialState: function () {
-    return {
-      projects: []
-    }
-  },
-
-  componentDidMount: function () {
-    var _this = this,
-    url       = "http://localhost:3000/projects"
-    //to get projects thru ajax
-    Request.get(url, function (res) {
-      var response = JSON.parse(res.text);
-      _this.setState({
-        projects: response.projects
-      })
-    })
-  },
-  addProject: function (project) {
-    var projects = this.state.projects;
-    projects.push(project);
-    this.setState({
-      projects: projects
-    })
-  },
+  mixins : [Router.Navigation],
   render: function () {
-    var projects = this.state.projects;
-    if (projects.length === 0) {
-      var projectView = <ProjectBlank /> //if no projects then render ProjectBlank component
-    } else {
-      var projectView = <ProjectList projects={projects} added={this.addProject} /> //pass down {projects} to ProjectList(list of all projects)
-    }
-
+    /*ProjectMain handles ProjectNew or ProjectList
+    Default Route is ProjectList. ProjectList checks if length == 0, if so, transitionTo NewProject, else display the list of Projects - ProjectList
+    */
     return (
           <div className="projects">
-          {projectView}
+          <RouteHandler />
           </div>
     );
   }

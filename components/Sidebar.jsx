@@ -11,18 +11,29 @@ var Request       = require('superagent')
 var _             = require('lodash')
 
 var Gravatar      = require('./Gravatar.jsx');
-var url           = "http://localhost:3000/users/me";
-var email="";
-var username="";
+
+
 var Sidebar  = React.createClass({
-    componentDidMount: function(){
+  getInitialState: function(){
+    return {
+      email : null,
+      username : null
+    }
+  },
+  componentWillMount: function(){
+      var _this = this;
+      var url   = "http://localhost:3000/users/me";
       Request(url, function(res) {
         var response = JSON.parse(res.text);
-        email=response.email;
-        username=response.username;
+        _this.setState({
+        email : response.email,
+        username : response.username
+      });
       })
   },
   render: function(){
+    var email = this.state.email;
+    var username = this.state.username;
   return(
     <div className="sidebar">
      <h2 className="logo"> AllClear </h2>

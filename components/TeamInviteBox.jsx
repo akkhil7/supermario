@@ -6,7 +6,7 @@ var DocumentTitle = require('react-document-title');
 
 var RouteHandler  = Router.RouteHandler;
 var Link          = Router.Link;
-var Route = Router.Route;
+var Route         = Router.Route;
 
 var Request       = require('superagent')
 var _             = require('lodash')

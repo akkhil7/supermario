@@ -14,11 +14,34 @@ var _             = require('lodash')
 var ProjectBox    = require('./ProjectBox.jsx');
 
 var ProjectList = React.createClass({
+  mixins : [Router.Navigation],
   getInitialState: function(){
     return { 
-      projects: this.props.projects
+      projects: []
     }
   },
+
+  componentDidMount: function () {
+    var _this = this;
+    var url   = "http://localhost:3000/projects"
+    Request.get(url, function (res) {
+      var response = JSON.parse(res.text);
+      /** _asynchronous and synchronous js code _. when the req is sent, rest of the code won't wait for the req completion. it'll run and it'll transition
+      /* to the other component. what was happening was you had already transitioned then it tried to change the state and add projects but that
+      /* component wasn't there now 
+
+      **/
+      if (_this.isMounted()) {
+        _this.setState({
+          projects: response.projects
+        })
+        if (response.projects.length === 0) {
+          this.transitionTo('projectsNew')
+        }
+      }
+    })
+  },
+
   addProject: function () {
     var _this = this;
     var project = {
@@ -37,10 +60,16 @@ var ProjectList = React.createClass({
     .end(function (err, res){
       console.log(res);
       var response = JSON.parse(res.text);
-      _this.props.added(response);
+      _this.addedProjectOffline(response);
      })
-
   }, 
+  addedProjectOffline: function (project) {
+    var projects = this.state.projects;
+    projects.push(project);
+    this.setState({
+      projects: projects
+    })
+  },
 
   deleteProject: function(project) {
     var index=-1;
@@ -58,11 +87,13 @@ var ProjectList = React.createClass({
     this.setState({
       projects: projects
     });
+    if(projects.length===0)
+      this.transitionTo('newproject');
   },
 
   render: function() {
     var _this = this;
-    var projects = this.props.projects;
+    var projects = this.state.projects;
     if(projects.length>0){
       var display = <div className="project-list">
                     Projects ({projects.length})
@@ -75,13 +106,6 @@ var ProjectList = React.createClass({
     return (
       <div className="projectswrapper">    
         {display}
-        <div className="add-a-project">
-          <input type="text" placeholder="Name your project" ref="name" />
-
-          <button onClick={this.addProject}>Add this project</button>
-          <button className="white" onClick={this.props.cancel}>Cancel</button> 
-
-        </div>
       </div>
     );
   }

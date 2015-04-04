@@ -9,26 +9,27 @@ var Link          = Router.Link;
 
 var Request       = require('superagent')
 var _             = require('lodash')
+var Route         = Router.Route;
 
 var ProjectList = require('./ProjectList.jsx');
 
 var ProjectNew = React.createClass({
   mixins: [Router.Navigation],
-
   addProject: function () { 
     var project = {
       name: this.refs.name.getDOMNode().value
     };
     var _this = this;
-    url       = "http://localhost:3000/projects";
+    var url   = "http://localhost:3000/projects";
     
     Request
     .post(url)
     .send({ project: project })
     .end(function (err, res){
       console.log(res);
+      _this.transitionTo('projectlist');
       })
-    this.transitionTo('projects')
+
   },
 
   render: function () {
