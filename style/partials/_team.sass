@@ -7,7 +7,7 @@ $primarycolor: #3c444d
   .teamlist
     +span-columns(8 of 8)
     h2
-      +span-columns(2 of 5)
+      +span-columns(2 of 8)
     button
       +span-columns(2 of 8)
       +shift(2)
@@ -17,25 +17,54 @@ $primarycolor: #3c444d
     button:hover
       background-color: #379436
     hr
-      +span-columns(5 of 5)
+      +span-columns(8 of 8)
 
   .teaminvite
-    padding: 10em 0
-    +span-columns(5 of 8)
-    +shift(1.5)
-    button
-      +span-columns(3 of 5)
-      +shift(1)
-    input
-      margin-top: 20px
-    h3
+    padding: 5em 0
+    +span-columns(8 of 8)
+    .invite
+      button
+        +span-columns(3 of 8)
+        +shift(2.5)
+      input
+        margin-top: 20px
+        +span-columns(5 of 8)
+        +shift(1.5)
+      h3
+        text-align: center
+      p
+        color: #999
+        padding-top: 5px
+        text-align: center
+        
+      .invitebox
+        +span-columns(3 of 8)
+        +shift(2)
+.add-user
+  margin-top: -5em
+  .user-box
+    +span-columns(2.5 of 8)
+    border-radius: 3px
+    background-color: #f3f3f3
+    padding: 5px 0
+    margin-top: 10px
+    h1
       text-align: center
-      margin
     p
-      color: #999
       text-align: center
-    .invitebox
-      +span-columns(3 of 8)
-      +shift(2)
-
-  
+      color: #1784fe
+    button
+      +span-columns(2 of 2.5)
+      +shift(0.25)
+      margin-bottom: 10px
+    .gravatar
+      +span-columns(2 of 2)
+      text-align: center
+      padding: 10px 0 10px 0
+      img
+        -webkit-border-radius: 99em
+        -moz-border-radius: 99em
+        border-radius: 99em
+        border: 5px solid white
+        box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3)
+    

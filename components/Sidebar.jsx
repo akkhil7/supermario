@@ -20,16 +20,16 @@ var Sidebar  = React.createClass({
       username : null
     }
   },
-  componentWillMount: function(){
-      var _this = this;
-      var url   = "http://localhost:3000/users/me";
-      Request(url, function(res) {
-        var response = JSON.parse(res.text);
-        _this.setState({
-        email : response.email,
-        username : response.username
+  componentDidMount: function(){
+    var _this = this;
+    var url   = "http://localhost:3000/users/me";
+    Request(url, function(res) {
+      var response = JSON.parse(res.text);
+      _this.setState({
+      email : response.email,
+      username : response.username
       });
-      })
+    })
   },
   render: function(){
     var email = this.state.email;
@@ -45,6 +45,7 @@ var Sidebar  = React.createClass({
      <li> <Link to="projects"> Projects </Link> </li>
      <li> <Link to="team"> Team </Link> </li>
      <li> <Link to="settings"> Settings </Link> </li>
+     <li> <Link to="register"> Register </Link> </li>
      </ul>
      </div>
      </div>

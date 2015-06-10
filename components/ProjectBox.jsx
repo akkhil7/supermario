@@ -56,11 +56,11 @@ var ProjectBox = React.createClass({
 
     return (
       <div className="project-box">
-        <h1>{project.name}</h1>
+        <h2>{project.name}</h2>
 
-        <a onClick={this.deleteProject}>Delete</a>
-        <input type="text" placeholder="Enter username" ref="user" />
-        <button onClick={this.addUser} className="button">Add this user</button>
+        <button className="delete" onClick={this.deleteProject}>Delete</button>
+        <p> Members: wow </p>
+
       </div>
     );
   }

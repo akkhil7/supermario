@@ -4,6 +4,7 @@
 @import "partials/sidebar";
 @import "partials/projects";
 @import "partials/team";
+@import "partials/register";
 $primarycolor: #3c444d;
 html {
   height: 100%;
@@ -18,6 +19,7 @@ body {
 
 .content {
   @include span-columns(12 of 12);
+  background-color : #fcfcfc;
   height: 100%;
 }
 
@@ -35,6 +37,13 @@ body {
       .flash.error{
         background-color: #f5b2c0;
         border-color: #741f31;
-        color: #741f31;
+        color: #a03f4f;
       }  
+  .title {
+    @include span-columns(2 of 8);
+    border-radius: 3px;
+    padding-left: auto;
+    padding-right: auto;
+    height: auto;
    } 
+  }

@@ -28,15 +28,14 @@ var ProjectList = React.createClass({
       var response = JSON.parse(res.text);
       /** _asynchronous and synchronous js code _. when the req is sent, rest of the code won't wait for the req completion. it'll run and it'll transition
       /* to the other component. what was happening was you had already transitioned then it tried to change the state and add projects but that
-      /* component wasn't there now 
-
+      /* component wasn't there then 
       **/
       if (_this.isMounted()) {
         _this.setState({
           projects: response.projects
         })
         if (response.projects.length === 0) {
-          this.transitionTo('projectsNew')
+          _this.transitionTo('newproject')
         }
       }
     })
@@ -96,7 +95,9 @@ var ProjectList = React.createClass({
     var projects = this.state.projects;
     if(projects.length>0){
       var display = <div className="project-list">
-                    Projects ({projects.length})
+                    <h2> Projects </h2> 
+                    <Link to="newproject"><button> Add Project </button></Link>
+                    <hr />
                     {projects.map(function(project){
                     return <ProjectBox deleted={_this.deleteProject} project={project} />
                     })}
