@@ -16,40 +16,11 @@ var ProjectBox = React.createClass({
     project: this.props.project
   }
   },
-  deleteProject: function(){
-    var _this     = this;
-    var project   = this.state.project;
-    var url       = "http://localhost:3000/projects/" + project.id;
-    
-    Request
-      .del(url)
-      .type('json')
-      .end(function(err, res){
-        console.log(res);
-        var response = JSON.parse(res.text);
-        _this.props.deleted(response);
-         })
+  
+  handleClick: function(){
+    this.props.deleted(this);
+    console.log(this);
   },
-  addUser: function(){
-    var _this = this;
-    var project = this.state.project;
-    var url = "/projects/" + project.id;
-    var username = project.created_by_id;
-    username+=","+this.refs.user.getDOMNode().value
-    project.user_ids = username.indexOf(",") > -1 ? username.split(",") : [username]
-
-    $.ajax({
-      type: 'PUT',
-      url: url,
-      data: { project : project },
-      success: function(res){
-        console.log(res);
-      }
-
-    });
-
-  },
-
   render: function() {
     var _this = this;
     var project = this.props.project;
@@ -58,7 +29,7 @@ var ProjectBox = React.createClass({
       <div className="project-box">
         <h2>{project.name}</h2>
 
-        <button className="delete" onClick={this.deleteProject}>Delete</button>
+        <button className="delete" onClick={this.handleClick}>Delete</button>
         <p> Members: wow </p>
 
       </div>

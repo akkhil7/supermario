@@ -52,6 +52,7 @@ var ProjectList = React.createClass({
     }
     var url = 'http://localhost:3000/projects'
     var _this = this;
+    var projects = this.state.projects
 
     Request
     .post(url)
@@ -59,55 +60,72 @@ var ProjectList = React.createClass({
     .end(function (err, res){
       console.log(res);
       var response = JSON.parse(res.text);
-      _this.addedProjectOffline(response);
+      projects.push(response)
+      _this.setState({
+        projects: projects
+      })
      })
   }, 
-  addedProjectOffline: function (project) {
+
+  deleteProject: function(childComponent) {
+
+    var index = -1;
+    var search = childComponent.props.project.id;
     var projects = this.state.projects;
-    projects.push(project);
+    var _this = this
+    var url      = "http://localhost:3000/projects/"
+    
+    Request
+    .del(url+search)
+    .type('json')
+    .end(function(err, res){
+      console.log(res);
+      var response = JSON.parse(res.text);
+
+      for(var i=0; i<projects.length; i++)
+        {
+          if(projects[i].id==search)
+            {
+              index=i;
+              console.log("Index: "+index)
+              _.pullAt(projects, index)
+              _this.setState({
+                projects: projects
+              })
+              break;
+            }
+        }
+      })
+
+      console.log(projects.length)
+      
     this.setState({
       projects: projects
     })
-  },
 
-  deleteProject: function(project) {
-    var index=-1;
-    var search=project.id;
-    var projects = this.state.projects;
-    for(var i=0; i<projects.length; i++)
-    {
-      if(projects[i].id==search)
-        {
-         index=i;
-         break;
-       }
-    }
-    projects.splice(index,1);
-    this.setState({
-      projects: projects
-    });
     if(projects.length===0)
       this.transitionTo('newproject');
+
   },
 
   render: function() {
     var _this = this;
     var projects = this.state.projects;
     if(projects.length>0){
-      var display = <div className="project-list">
-                    <h2> Projects </h2> 
-                    <Link to="newproject"><button> Add Project </button></Link>
-                    <hr />
-                    {projects.map(function(project){
+      var display = projects.map(function(project){
                     return <ProjectBox deleted={_this.deleteProject} project={project} />
-                    })}
-                    </div>
+                    })
     }
 
     return (
-      <div className="projectswrapper">    
+    <div className="projectswrapper"> 
+      <div className="project-list">
+                    <h2> Projects </h2> 
+                    <Link to="newproject"><button> Add Project </button></Link>
+                    <hr />
         {display}
       </div>
+    </div>
     );
   }
 
