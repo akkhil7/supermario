@@ -12,6 +12,8 @@ var Request       = require('superagent')
 var _             = require('lodash')
 var Dropdown      = require('./Dropdown.jsx')
 
+var UserBox = require('./UserBox.jsx');
+
 var TeamInviteBox= React.createClass({
   mixins: [Router.Navigation],
 
@@ -23,7 +25,7 @@ var TeamInviteBox= React.createClass({
       isClicked : false
     }
   },
-  componentDidMount: function(){
+  /*componentDidMount: function(){
   var url = "http://localhost:3000/users/";
   var _this = this;
   //load all users
@@ -32,6 +34,16 @@ var TeamInviteBox= React.createClass({
     _this.setState({
       users:response.users
     });
+    })
+  },
+  */
+  addUser: function(childComponent){
+    var users = this.state.users;
+    var user = childComponent.props.user
+    console.log(user);
+    users.push(user)
+    this.setState({
+      users: users
     })
   },
   /*
@@ -89,9 +101,17 @@ var TeamInviteBox= React.createClass({
       }
     */
   render: function() {
+    var users = this.state.users
+    if(users.length > 0)
+      var display = users.map(function(user){
+        return <UserBox user={user} />
+      })
     return(
-      <div className="teaminvite">
-        <Dropdown />
+      <div>
+        <h2> Add Team Member </h2>
+        <hr />
+        <Dropdown onAddUser={this.addUser} />
+        {display}
       </div>
     );
   }

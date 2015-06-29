@@ -379,12 +379,13 @@ button, input[type="submit"] {
 
 .team {
   padding-top: 20px;
-  float: left;
-  display: block;
-  margin-right: 3.57866%;
-  width: 100%; }
-  .team:last-child {
-    margin-right: 0; }
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto; }
+  .team::after {
+    clear: both;
+    content: "";
+    display: table; }
   .team span {
     font-size: 0.9em; }
   .team .teamlist {
@@ -461,43 +462,44 @@ button, input[type="submit"] {
       .team .teaminvite .invite .invitebox:last-child {
         margin-right: 0; }
 
-.add-user {
+.user-box-wrapper {
   margin-top: -5em; }
-  .add-user .user-box {
+  .user-box-wrapper .user-box {
     float: left;
     display: block;
     margin-right: 3.57866%;
-    width: 28.78967%;
+    width: 22.316%;
     border-radius: 3px;
     background-color: #f3f3f3;
     padding: 5px 0;
+    margin-left: 20px;
     margin-top: 10px; }
-    .add-user .user-box:last-child {
+    .user-box-wrapper .user-box:last-child {
       margin-right: 0; }
-    .add-user .user-box h1 {
+    .user-box-wrapper .user-box h3 {
       text-align: center; }
-    .add-user .user-box p {
+    .user-box-wrapper .user-box p {
       text-align: center;
       color: #1784fe; }
-    .add-user .user-box button {
+    .user-box-wrapper .user-box button {
       float: left;
       display: block;
-      margin-right: 12.43037%;
-      width: 77.51393%;
-      margin-left: 11.24304%;
+      margin-right: 16.03631%;
+      width: 70.99092%;
+      margin-left: 14.50454%;
       margin-bottom: 10px; }
-      .add-user .user-box button:last-child {
+      .user-box-wrapper .user-box button:last-child {
         margin-right: 0; }
-    .add-user .user-box .gravatar {
+    .user-box-wrapper .user-box .gravatar {
       float: left;
       display: block;
       margin-right: 16.03631%;
       width: 100%;
       text-align: center;
       padding: 10px 0 10px 0; }
-      .add-user .user-box .gravatar:last-child {
+      .user-box-wrapper .user-box .gravatar:last-child {
         margin-right: 0; }
-      .add-user .user-box .gravatar img {
+      .user-box-wrapper .user-box .gravatar img {
         -webkit-border-radius: 99em;
         -moz-border-radius: 99em;
         border-radius: 99em;
@@ -512,6 +514,69 @@ button, input[type="submit"] {
   width: 100%; }
   .register:last-child {
     margin-right: 0; }
+
+.genesis {
+  float: left;
+  display: block;
+  float: left;
+  display: block;
+  margin-right: 3.57866%;
+  width: 100%; }
+  .genesis:last-child {
+    margin-right: 0; }
+  .genesis input {
+    float: left;
+    display: block;
+    margin-right: 3.57866%;
+    width: 100%; }
+  .genesis input:last-child {
+    margin-right: 0; }
+  .genesis .dropdown {
+    float: left;
+    display: block;
+    margin-right: 3.57866%;
+    width: 100%;
+    height: auto;
+    margin-top: -12px;
+    background-color: #ffffff;
+    border-color: #ddd;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+    border-width: 1px;
+    border-style: solid;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    font-size: 1em; }
+  .genesis .dropdown:last-child {
+    margin-right: 0; }
+    .genesis .dropdown:last-child .item {
+      float: left;
+      display: block;
+      margin-right: 3.57866%;
+      width: 100%;
+      padding-top: 0.5em;
+      padding-left: 0.5em;
+      padding-right: 0.5em; }
+    .genesis .dropdown:last-child .item:last-child {
+      margin-right: 0; }
+    .genesis .dropdown:last-child li {
+      border-width: 1px;
+      float: left;
+      float: left;
+      display: block;
+      margin-right: 3.57866%;
+      width: 61.158%; }
+    .genesis .dropdown:last-child li:last-child {
+      margin-right: 0; }
+    .genesis .dropdown:last-child p {
+      float: left;
+      display: block;
+      margin-right: 3.57866%;
+      width: 35.26334%;
+      float: right;
+      text-align: right;
+      color: #ddd; }
+    .genesis .dropdown:last-child p:last-child {
+      margin-right: 0; }
 
 html {
   height: 100%;

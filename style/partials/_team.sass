@@ -1,7 +1,7 @@
 $primarycolor: #3c444d
 .team
   padding-top: 20px
-  +span-columns(8 of 8)
+  +outer-container
   span
     font-size: 0.9em
   .teamlist
@@ -40,21 +40,23 @@ $primarycolor: #3c444d
       .invitebox
         +span-columns(3 of 8)
         +shift(2)
-.add-user
+        
+.user-box-wrapper
   margin-top: -5em
   .user-box
-    +span-columns(2.5 of 8)
+    +span-columns(2 of 8)
     border-radius: 3px
     background-color: #f3f3f3
     padding: 5px 0
+    margin-left: 20px
     margin-top: 10px
-    h1
+    h3
       text-align: center
     p
       text-align: center
       color: #1784fe
     button
-      +span-columns(2 of 2.5)
+      +span-columns(1.5 of 2)
       +shift(0.25)
       margin-bottom: 10px
     .gravatar
@@ -67,4 +69,6 @@ $primarycolor: #3c444d
         border-radius: 99em
         border: 5px solid white
         box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3)
+  .user-box:nth-child(1+4n)
+    margin-left: 0
     

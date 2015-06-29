@@ -5,6 +5,8 @@
 @import "partials/projects";
 @import "partials/team";
 @import "partials/register";
+@import "partials/dropdown";
+
 $primarycolor: #3c444d;
 html {
   height: 100%;
@@ -38,12 +40,12 @@ body {
         background-color: #f5b2c0;
         border-color: #741f31;
         color: #a03f4f;
-      }  
+      }
   .title {
     @include span-columns(2 of 8);
     border-radius: 3px;
     padding-left: auto;
     padding-right: auto;
     height: auto;
-   } 
+   }
   }
