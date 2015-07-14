@@ -6,6 +6,7 @@
 @import "partials/team";
 @import "partials/register";
 @import "partials/dropdown";
+@import "font-awesome/scss/font-awesome";
 
 $primarycolor: #3c444d;
 html {
@@ -27,9 +28,9 @@ body {
 
   .main {
     @include span-columns(8 of 12);
-    height: 100%;
-    margin: 0;
-
+    min-height: 100%;
+    height: auto;
+    @include shift(3);
     .flash {
       height: auto;
       padding: 10px 20px;

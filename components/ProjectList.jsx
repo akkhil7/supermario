@@ -28,7 +28,7 @@ var ProjectList = React.createClass({
       var response = JSON.parse(res.text);
       /** _asynchronous and synchronous js code _. when the req is sent, rest of the code won't wait for the req completion. it'll run and it'll transition
       /* to the other component. what was happening was you had already transitioned then it tried to change the state and add projects but that
-      /* component wasn't there then 
+      /* component wasn't there then. you tried to go the next component and tried to setState of previous component.
       **/
       if (_this.isMounted()) {
         _this.setState({

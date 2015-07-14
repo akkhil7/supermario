@@ -17,7 +17,7 @@ var ProjectWrapper = React.createClass({
   render: function() {
     return(
       <div className="project-wrapper">
-        <RouteHandler />
+        <RouteHandler/>
       </div>
       );
   }

@@ -18,18 +18,20 @@ var ProjectBox = React.createClass({
   },
   
   handleClick: function(){
-    this.props.deleted(this);
-    console.log(this);
+    if(confirm("Are you sure you want to delete this project"))
+      this.props.deleted(this);
   },
   render: function() {
     var _this = this;
     var project = this.props.project;
 
     return (
-      <div className="project-box">
-        <h2>{project.name}</h2>
+        <div className="project-box">
+      <Link to="projectwrapper" params={{id:project.id}} >
+        <h3>{project.name}</h3>
+      </Link>
 
-        <button className="delete" onClick={this.handleClick}>Delete</button>
+        <a onClick={this.handleClick} className="delete"><i className="fa fa-times" onClick={this.handleClick}></i></a>
         <p> Members: wow </p>
 
       </div>
