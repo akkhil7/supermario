@@ -39,7 +39,7 @@ render: function() {
   return (
       <div className="issue-box"> 
         <span> {issue.title} </span>
-        <a onClick={this.handlePriority}> PRIORITY </a>
+        <i className="fa fa-exclamation-circle" onClick={this.handlePriority}></i>
         {showPriority}
       </div>
     );

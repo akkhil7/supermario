@@ -7,9 +7,14 @@
 @import "partials/register";
 @import "partials/dropdown";
 @import "partials/issue";
-@import "font-awesome";
+@import "font-awesome/scss/font-awesome";
 
-$primarycolor: #3c444d;
+$sidebar: #3c444d;
+$blue: #43a1f9;
+$green: #56C455;
+$default: #477DCA;
+
+
 html {
   height: 100%;
   background: white

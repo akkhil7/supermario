@@ -5,6 +5,16 @@ $primarycolor: #3c444d
   background-color: $primarycolor
   min-height: 100%
   height: auto
+
+  .menu
+    +span-columns(6)
+    +shift(4)
+    a
+      color: white
+      line-height: 2
+    i
+      line-height: 1.7
+      
   .logo
     +span-columns(2 of 4)
     +shift(1)
@@ -27,19 +37,9 @@ $primarycolor: #3c444d
       box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3)
 
   .nav
-    text-align: center
-    li
-      color: white
-      +span-columns(3 of 3)
-      padding-top: 5px
-      a
-        color: white
-        +span-columns(2 of 3)
-        +shift(0.5)
-      a[hover]
-        color: red
     p
       color: white
+      text-align: center
       +span-columns(2 of 3)
       +shift(0.5)
       padding: 5px 0 5px 0

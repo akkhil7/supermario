@@ -42,11 +42,11 @@ var Sidebar  = React.createClass({
      <Gravatar email={email} />
      <div className="nav">
      <p> Welcome <span className="username">{username}</span></p>
-     <ul>
-     <li> <Link to="projects"> Projects </Link> </li>
-     <li> <Link to="team"> Team </Link> </li>
-     <li> <Link to="settings"> Settings </Link> </li>
-     <li> <Link to="register"> Register </Link> </li>
+     <ul className="menu fa-ul">
+       <li><Link to="projects"><i className="fa-li fa fa-book fa-fw"></i> Projects </Link> </li>
+     <li> <Link to="team"><i className="fa-li fa fa-users fa-fw"></i>  Team </Link> </li>
+     <li> <Link to="settings"><i className="fa-li fa fa-gear fa-fw"></i>  Settings </Link> </li>
+     <li> <Link to="register"><i className="fa-li fa fa-user-plus fa-fw"></i>  Register </Link> </li>
      </ul>
      </div>
      </div>
