@@ -25,6 +25,7 @@ var Sidebar  = React.createClass({
     var url   = "http://localhost:3000/users/me";
     Request(url, function(res) {
       var response = JSON.parse(res.text);
+      response = response.user
       _this.setState({
       email : response.email,
       username : response.username

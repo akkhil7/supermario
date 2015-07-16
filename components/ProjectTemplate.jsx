@@ -16,6 +16,7 @@ var _             = require('lodash')
 var Gravatar      = require('./Gravatar.jsx')
 var IssueBox      = require('./IssueBox.jsx')
 
+
 var ProjectTemplate = React.createClass({
   mixins: [ Router.State, Router.Navigation ],
   getInitialState: function() {
@@ -35,6 +36,7 @@ var ProjectTemplate = React.createClass({
           project : project
         })
     })  
+
     Request.get("http://localhost:3000/issues/", function(res){
       var response = JSON.parse(res.text)
       var issues = response.issues
@@ -66,11 +68,13 @@ var ProjectTemplate = React.createClass({
       console.log(res)
       var response = JSON.parse(res.text)
       console.log(response)
-      issues.push(response)
+      issues.push(response.issue)
       _this.setState({
         issues: issues
       })
     })
+
+    this.refs.issue.getDOMNode().value = ""
   },
   render: function() {
     var project = this.state.project
@@ -89,15 +93,15 @@ var ProjectTemplate = React.createClass({
       <div className="project-template">
         <h2> {name} </h2>
         <div className="project-issues">
-        <h3> Issues </h3>
-        A single project will be shown here. Project details, no of issues, whatever.
-        {display}
-        <form onSubmit={this.addIssue}>
-          <input type="text" ref="issue" placeholder="enter issue here" />
-          <input type="submit" />
-        </form>
-      </div>
+          <h3> Issues </h3>
+          <hr />
+          {display}
+          <form onSubmit={this.addIssue}>
+            <input type="text" ref="issue" placeholder="enter issue here" />
+            <input type="submit" />
+          </form>
         </div>
+     </div>
     )
   }       
 })

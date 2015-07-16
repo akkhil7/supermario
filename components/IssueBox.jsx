@@ -5,12 +5,42 @@ var Router        = require('react-router');
 var DocumentTitle = require('react-document-title');
 
 var IssueBox = React.createClass({
+getInitialState: function() {
+  return {
+    toggleTeam: false,
+    togglePriority: false
+  }
+},
 
-  render: function() {
-    var issue = this.props.issue
-    return (
+handlePriority: function(e){
+
+  var togglePriority = this.state.togglePriority
+
+  e.preventDefault()
+  this.setState({
+    togglePriority: !togglePriority
+  })
+},
+render: function() {
+  var issue = this.props.issue
+  var togglePriority = this.state.togglePriority
+  
+  if(togglePriority)
+  {  
+    var showPriority = (<div className="priority">
+                        <a onClick={this.priorityClick}> Low </a>
+                        <a onClick={this.priorityClick}> Medium </a>
+                        <a onClick={this.priorityClick}> High </a>
+                      </div>
+                       );
+  }
+  else
+    var showPriority = ""
+  return (
       <div className="issue-box"> 
-        <p> {issue.title} </p>
+        <span> {issue.title} </span>
+        <a onClick={this.handlePriority}> PRIORITY </a>
+        {showPriority}
       </div>
     );
   }

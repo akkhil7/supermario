@@ -11,7 +11,7 @@ var crypto        = require('crypto');
 var Gravatar = React.createClass({
 
   render: function(){
-  var email = this.props.email;
+    var email = this.props.email;
     if (email !== null)
      {
    var hash = crypto.createHash("md5").update(email).digest("hex");
