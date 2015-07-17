@@ -51,12 +51,15 @@ var ProjectTemplate = React.createClass({
     var url = "http://localhost:3000/issues/"
     e.preventDefault()
     var _this = this
-    var p_id = this.getParams().id;    
+    var p_id = this.getParams().id;
+    console.log(this.refs.issue.getDOMNode().value)
+    var issue_title = _.trim(this.refs.issue.getDOMNode().value)
+    console.log(issue_title)
     var issue = {
-      title: this.refs.issue.getDOMNode().value,
+      title: issue_title,
       project_id: p_id,
       assigned_to_id: 5,
-      priority: "low"
+      priority: "Low"
     }
     
     var issues = this.state.issues
@@ -71,11 +74,40 @@ var ProjectTemplate = React.createClass({
       issues.push(response.issue)
       _this.setState({
         issues: issues
+      }, function() {
+          _this.refs.issue.getDOMNode().value = null
       })
     })
 
-    this.refs.issue.getDOMNode().value = ""
   },
+  
+  updateIssue: function(issueBox){
+
+    var issue = issueBox.props.issue
+    
+    var url = "http://localhost:3000/issues/"+issue.id;
+
+    var issues = this.state.issues
+    var _this = this
+
+    Request
+      .put(url)
+      .send({issue: issue})
+      .end(function(err,res){
+        var response = JSON.parse(res.text)
+        console.log(res)
+        Request
+          .get("http://localhost:3000/issues/")
+          .end(function(res){
+            var response = JSON.parse(res.text)
+            console.log(res)
+            _this.setState({
+              issues: response.issues
+            })
+          })
+      })
+  },
+  
   render: function() {
     var project = this.state.project
 
@@ -83,10 +115,11 @@ var ProjectTemplate = React.createClass({
       var name = project.name.toUpperCase()
 
     var issues = this.state.issues
+    var _this = this
     if(issues.length > 0)
       {
       var display = issues.map(function(issue){
-                      return <IssueBox issue={issue} />
+                      return <IssueBox issue={issue} updateIssue={_this.updateIssue} />
                       })
       }
     return(

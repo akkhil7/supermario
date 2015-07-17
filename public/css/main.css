@@ -225,7 +225,8 @@ button, input[type="submit"] {
     display: block;
     margin-right: 2.35765%;
     width: 48.82117%;
-    margin-left: 34.11922%; }
+    margin-left: 42.64902%;
+    margin-top: 25px; }
     .sidebar .menu:last-child {
       margin-right: 0; }
     .sidebar .menu a {
@@ -379,11 +380,13 @@ button, input[type="submit"] {
     .project-template .project-issues input[type="text"] {
       border: none;
       box-shadow: none;
-      border-radius: none;
+      border-radius: 0;
       background-color: #fcfcfc; }
     .project-template .project-issues input[type="submit"] {
       position: absolute;
       left: -9999px; }
+    .project-template .project-issues input:focus {
+      border-bottom: 1px solid #477DCA; }
 
 .team {
   padding-top: 20px;
@@ -588,44 +591,69 @@ button, input[type="submit"] {
     .genesis .dropdown:last-child p:last-child {
       margin-right: 0; }
 
+.low {
+  border-bottom-color: #56C455; }
+
+.medium {
+  border-bottom-color: #f9bb35; }
+
+.high {
+  border-bottom-color: #c64949; }
+
 .issue-box {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%;
   background-color: #fcfcfc;
-  border-bottom: 2px solid #e9e9e9;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
   margin-bottom: 10px;
   min-height: 35px;
+  height: auto;
   padding: 10px 0 10px 5px;
   line-height: 1;
   position: relative; }
+  .issue-box:last-child {
+    margin-right: 0; }
+  .issue-box i {
+    color: #477DCA; }
   .issue-box span {
     float: left;
     display: block;
     margin-right: 2.35765%;
-    width: 100%;
-    margin-top: 10px; }
+    width: 31.76157%;
+    display: inline; }
     .issue-box span:last-child {
       margin-right: 0; }
   .issue-box .priority {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    position: absolute;
-    height: auto;
+    text-align: center;
     float: left;
     display: block;
     margin-right: 2.35765%;
     width: 23.23176%;
-    margin-left: 34.11922%; }
+    margin-left: 42.64902%; }
     .issue-box .priority:last-child {
       margin-right: 0; }
-  .issue-box a {
-    color: white;
-    display: inline-block;
-    text-align: left;
+  .issue-box .priority-box {
     float: left;
     display: block;
     margin-right: 2.35765%;
-    width: 6.17215%; }
-    .issue-box a:last-child {
+    width: 31.76157%;
+    padding: 0 5px;
+    height: auto;
+    margin-right: 0;
+    margin-left: 34.11922%; }
+    .issue-box .priority-box:last-child {
       margin-right: 0; }
+    .issue-box .priority-box a {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 31.76157%;
+      text-align: center; }
+      .issue-box .priority-box a:last-child {
+        margin-right: 0; }
 
 /*!
  *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
