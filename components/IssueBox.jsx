@@ -11,9 +11,10 @@ getInitialState: function() {
     togglePriority: false
   }
 },
-handleClick: function(e) {
 
-  // alert("wow");
+handleClick: function() {
+
+  this.props.show(this)
   
 },
 handlePriority: function(e){
@@ -60,8 +61,8 @@ render: function() {
   else
     var showPriority = <a className="priority" href="#" onClick={this.handlePriority}>{priority}</a>
   return (
-    <div className={issueClassName} onClick={this.handleClick}>
-      <span>{issue.title}</span>
+    <div className={issueClassName}>
+      <a href="#" onClick={this.handleClick}>{issue.title}</a>
                     {showPriority}
             </div>
     );

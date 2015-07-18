@@ -1,5 +1,5 @@
 .projectswrapper
-  +span-columns(8 of 8)
+  +span-columns(8)
   padding-top: 20px
   .project-list
     +span-columns(8 of 8)
@@ -50,10 +50,12 @@
 
 //ProjectTemplate
 .project-template
-  padding-top: 20px
+  h2
+    padding-top: 20px
+    +span-columns(8)
 
   .project-issues
-    +shift(0.2)
+    +span-columns(8)
     padding-top: 20px
 
     input[type="text"]

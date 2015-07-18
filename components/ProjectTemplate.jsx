@@ -15,6 +15,7 @@ var _             = require('lodash')
     
 var Gravatar      = require('./Gravatar.jsx')
 var IssueBox      = require('./IssueBox.jsx')
+var IssueSidebar  = require('./IssueSidebar.jsx')
 
 
 var ProjectTemplate = React.createClass({
@@ -22,9 +23,12 @@ var ProjectTemplate = React.createClass({
   getInitialState: function() {
     return {
       project: [],
-      issues: []
+      issues: [],
+      showIssue: false,
+      issue: undefined
     }
   },
+  
   componentDidMount: function() {
     var id = this.getParams().id;
     var url = "http://localhost:3000/projects/"+id
@@ -107,24 +111,45 @@ var ProjectTemplate = React.createClass({
           })
       })
   },
+
+  toggleSidebar: function(issueBox) {
+
+    var issue = issueBox.props.issue
+    var showIssue = this.state.showIssue
+
+    this.setState({
+      showIssue: !showIssue,
+      issue: issue
+    })
+    
+  },
+
   
   render: function() {
     var project = this.state.project
+    var showIssue = this.state.showIssue
+    var issues = this.state.issues
+    var issue = this.state.issue
+    var _this = this
+    var showIssueSidebar;
 
     if(!_.isEmpty(project))
       var name = project.name.toUpperCase()
 
-    var issues = this.state.issues
-    var _this = this
     if(issues.length > 0)
       {
       var display = issues.map(function(issue){
-                      return <IssueBox issue={issue} updateIssue={_this.updateIssue} />
+                      return <IssueBox show={_this.toggleSidebar} issue={issue} updateIssue={_this.updateIssue} />
                       })
       }
+
+    if(showIssue)
+      showIssueSidebar = <IssueSidebar issue={issue} hide={this.toggleSidebar} />
+    
     return(
       <div className="project-template">
-        <h2> {name} </h2>
+        <h2>{name}</h2>
+        {showIssueSidebar}
         <div className="project-issues">
           <h3> Issues </h3>
           <hr />
@@ -134,6 +159,7 @@ var ProjectTemplate = React.createClass({
             <input type="submit" />
           </form>
         </div>
+
      </div>
     )
   }       
