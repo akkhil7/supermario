@@ -24,8 +24,7 @@ var ProjectTemplate = React.createClass({
     return {
       project: [],
       issues: [],
-      showIssue: false,
-      issue: undefined
+      activeIssue: undefined,
     }
   },
   
@@ -40,6 +39,7 @@ var ProjectTemplate = React.createClass({
           project : project
         })
     })  
+
 
     Request.get("http://localhost:3000/issues/", function(res){
       var response = JSON.parse(res.text)
@@ -111,27 +111,34 @@ var ProjectTemplate = React.createClass({
           })
       })
   },
-
-  toggleSidebar: function(issueBox) {
-
-    var issue = issueBox.props.issue
-    var showIssue = this.state.showIssue
-
+ 
+  showIssue: function(event, childComponent) {
+    event.preventDefault()
+    var issue = childComponent.props.issue
     this.setState({
-      showIssue: !showIssue,
-      issue: issue
+      activeIssue: issue
     })
-    
+  
   },
 
-  
+  hideIssue: function(childComponent) {
+    
+    this.setState({
+      activeIssue: undefined
+    })
+
+  },
   render: function() {
     var project = this.state.project
-    var showIssue = this.state.showIssue
     var issues = this.state.issues
-    var issue = this.state.issue
-    var _this = this
+    var activeIssue = this.state.activeIssue
     var showIssueSidebar;
+    var _this = this;
+    
+    if(activeIssue !== undefined)
+      var showIssue = true
+    else
+      var showIssue = false
 
     if(!_.isEmpty(project))
       var name = project.name.toUpperCase()
@@ -139,12 +146,12 @@ var ProjectTemplate = React.createClass({
     if(issues.length > 0)
       {
       var display = issues.map(function(issue){
-                      return <IssueBox show={_this.toggleSidebar} issue={issue} updateIssue={_this.updateIssue} />
+                      return <IssueBox showIssue={_this.showIssue} issue={issue} updateIssue={_this.updateIssue} />
                       })
       }
 
     if(showIssue)
-      showIssueSidebar = <IssueSidebar issue={issue} hide={this.toggleSidebar} />
+      showIssueSidebar = <IssueSidebar hideIssue={this.hideIssue} issue={activeIssue} isActive={true} />
     
     return(
       <div className="project-template">

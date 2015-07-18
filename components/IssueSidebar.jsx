@@ -5,9 +5,10 @@ var Router        = require('react-router');
 var DocumentTitle = require('react-document-title');
 
 var IssueSidebar = React.createClass({
-  
-  hideIssue: function() {
-    this.props.hide(this)
+
+  hideIssue: function(){
+
+    this.props.hideIssue(this)
   },
   
   render: function() {

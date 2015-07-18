@@ -7,15 +7,14 @@ var DocumentTitle = require('react-document-title');
 var IssueBox = React.createClass({
 getInitialState: function() {
   return {
-    toggleIssue: false,
-    togglePriority: false
+    togglePriority: false,
   }
 },
 
-handleClick: function() {
-
-  this.props.show(this)
+handleClick: function(){
   
+  this.props.showIssue(this)
+
 },
 handlePriority: function(e){
 

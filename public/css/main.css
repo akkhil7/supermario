@@ -365,32 +365,44 @@ button, input[type="submit"] {
     .add-a-project button:last-child {
       margin-right: 0; }
 
-.project-template h2 {
-  padding-top: 20px;
+.project-template {
+  position: absolute;
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 65.88078%; }
-  .project-template h2:last-child {
+  width: 74.41059%;
+  min-height: 100%;
+  height: auto; }
+  .project-template:last-child {
     margin-right: 0; }
-.project-template .project-issues {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 65.88078%;
-  padding-top: 20px; }
-  .project-template .project-issues:last-child {
-    margin-right: 0; }
-  .project-template .project-issues input[type="text"] {
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
-    background-color: #fcfcfc; }
-  .project-template .project-issues input[type="submit"] {
-    position: absolute;
-    left: -9999px; }
-  .project-template .project-issues input:focus {
-    border-bottom: 1px solid #477DCA; }
+  .project-template h2 {
+    padding-top: 20px;
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 65.88078%; }
+    .project-template h2:last-child {
+      margin-right: 0; }
+  .project-template .project-issues {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 65.88078%;
+    padding-top: 20px; }
+    .project-template .project-issues:last-child {
+      margin-right: 0; }
+    .project-template .project-issues input[type="text"] {
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
+      background-color: #fcfcfc;
+      border-bottom-color: #fcfcfc; }
+    .project-template .project-issues input[type="submit"] {
+      position: absolute;
+      left: -9999px; }
+    .project-template .project-issues input:focus {
+      border-bottom: 1px solid #0486ff;
+      transition: border-bottom-color 300ms; }
 
 .team {
   padding-top: 20px;
@@ -617,7 +629,8 @@ button, input[type="submit"] {
   height: auto;
   padding: 10px 0 10px 5px;
   line-height: 1;
-  position: relative; }
+  position: relative;
+  transition: border-bottom-color 500ms; }
   .issue-box:last-child {
     margin-left: 0; }
   .issue-box i {
@@ -660,7 +673,9 @@ button, input[type="submit"] {
   width: 31.76157%;
   margin-right: 0;
   background-color: white;
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
   min-height: 100%;
   height: auto; }
   .issue-sidebar:last-child {

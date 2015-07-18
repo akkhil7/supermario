@@ -50,6 +50,10 @@
 
 //ProjectTemplate
 .project-template
+  position: absolute
+  +span-columns(9 of 12)
+  min-height: 100%
+  height: auto
   h2
     padding-top: 20px
     +span-columns(8)
@@ -63,13 +67,16 @@
       box-shadow: none
       border-radius: 0
       background-color: #fcfcfc
+      border-bottom-color: #fcfcfc
 
     input[type="submit"]
       position: absolute
       left: -9999px
 
     input:focus
-      border-bottom: 1px solid $blue
+      border-bottom: 1px solid $blue-color
+      transition: border-bottom-color 300ms
+      
 
 
 
