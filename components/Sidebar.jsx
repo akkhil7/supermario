@@ -39,7 +39,7 @@ var Sidebar  = React.createClass({
     <div className="sidebar">
      <h2 className="logo"> AllClear </h2>
     
-     <Gravatar email={email} />
+     <Gravatar email={email} size={150} />
      <div className="nav">
      <p> Welcome <span className="username">{username}</span></p>
      <ul className="menu fa-ul">

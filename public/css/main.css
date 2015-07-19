@@ -401,7 +401,7 @@ button, input[type="submit"] {
       position: absolute;
       left: -9999px; }
     .project-template .project-issues input:focus {
-      border-bottom: 1px solid #0486ff;
+      border-bottom: 2px solid #0486ff;
       transition: border-bottom-color 300ms; }
 
 .team {
@@ -673,25 +673,44 @@ button, input[type="submit"] {
   width: 31.76157%;
   margin-right: 0;
   background-color: white;
+  color: #333;
   position: absolute;
   top: 0;
   right: 0;
   min-height: 100%;
-  height: auto; }
+  height: auto;
+  padding: 10px; }
   .issue-sidebar:last-child {
     margin-right: 0; }
   .issue-sidebar h2 {
     float: left;
     display: block;
     margin-right: 2.35765%;
-    width: 100%;
-    text-align: center; }
+    width: 65.88078%;
+    font-weight: 200;
+    text-align: center;
+    margin-left: 17.05961%;
+    padding-bottom: 5px;
+    border-bottom: 2px solid white;
+    margin-bottom: 10px; }
     .issue-sidebar h2:last-child {
       margin-right: 0; }
   .issue-sidebar .close {
     position: absolute;
     top: 0;
     right: 0; }
+
+.issue-sidebar-desc input[type="text"] {
+  border: none;
+  box-shadow: none;
+  border-radius: 2px;
+  border-color: white; }
+.issue-sidebar-desc input[type="submit"] {
+  position: absolute;
+  left: -9999px; }
+.issue-sidebar-desc input:focus {
+  border: 1px solid #0486ff;
+  transition: border 500ms; }
 
 /*!
  *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome

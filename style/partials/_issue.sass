@@ -48,17 +48,40 @@
   +span-columns(4)
   +omega()
   background-color: white
+  color: #333
   position: absolute
   top: 0
   right: 0
   min-height: 100%
   height: auto
+  padding: 10px
 
   h2
-    +span-columns(12)
+    +span-columns(8)
+    font-weight: 200
     text-align: center
-
+    +shift(2)
+    padding-bottom: 5px
+    border-bottom: 2px solid white
+    margin-bottom: 10px
+    
   .close
     position: absolute
     top: 0
     right: 0
+
+.issue-sidebar-desc
+
+  input[type="text"]
+    border: none
+    box-shadow: none
+    border-radius: 2px
+    border-color: white
+
+  input[type="submit"]
+    position: absolute
+    left: -9999px
+
+  input:focus
+    border: 1px solid $blue-color
+    transition: border 500ms

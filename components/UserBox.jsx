@@ -11,7 +11,7 @@ var UserBox = React.createClass({
       return (
       <div className="user-box-wrapper">
       <div className="user-box">
-      <Gravatar email={user.email} />
+      <Gravatar email={user.email} size={150} />
       <h3> @{user.username} </h3>
       <p> {user.email} </p>
       <button onClick={this.addUser}> Remove User </button>

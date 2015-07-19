@@ -28,60 +28,85 @@ var ProjectTemplate = React.createClass({
     }
   },
   
-  componentDidMount: function() {
-    var id = this.getParams().id;
-    var url = "http://localhost:3000/projects/"+id
-    var _this = this
-    Request.get(url, function(res) {
-        var response = JSON.parse(res.text)
-        var project  = response.project
-        _this.setState({
-          project : project
-        })
-    })  
-
-
-    Request.get("http://localhost:3000/issues/", function(res){
-      var response = JSON.parse(res.text)
-      var issues = response.issues
-      _this.setState({
-        issues: issues
-      })
+componentDidMount: function() {
+  var id = this.getParams().id;
+  var url = "http://localhost:3000/projects/"+id
+  var _this = this
+  Request.get(url, function(res) {
+    var response = JSON.parse(res.text)
+    var project  = response.project
+    _this.setState({
+      project : project
     })
-  },
+  })  
 
 
-  addIssue: function(e) {
-    var url = "http://localhost:3000/issues/"
-    e.preventDefault()
-    var _this = this
-    var p_id = this.getParams().id;
-    console.log(this.refs.issue.getDOMNode().value)
-    var issue_title = _.trim(this.refs.issue.getDOMNode().value)
-    console.log(issue_title)
+  Request.get("http://localhost:3000/issues/", function(res){
+    var response = JSON.parse(res.text)
+    var issues = response.issues
+    _this.setState({
+      issues: issues
+    })
+  })
+},
+
+
+currentUser: function() {
+  
+  return new Promise(function(resolve,reject){
+  var url = "http://localhost:3000/users/me";
+  
+  Request.get(url, function(res)
+     {
+      if(res.xhr.status == 200)
+        resolve(res.text)
+      else
+        reject(Error(err))
+    })
+  })
+  
+},
+
+addIssue: function(e) {
+
+  var url = "http://localhost:3000/issues/"
+  e.preventDefault()
+  var _this = this
+  var p_id = this.getParams().id;
+  var issues = this.state.issues
+  var issue_title = _.trim(this.refs.issue.getDOMNode().value)
+
+
+ this.currentUser().then(function(response){
+
+    response = JSON.parse(response).user
+
     var issue = {
       title: issue_title,
       project_id: p_id,
-      assigned_to_id: 5,
+      assigned_to_id: response.id,
       priority: "Low"
     }
     
-    var issues = this.state.issues
-
     Request
     .post(url)
     .send({issue: issue})
     .end(function(err,res) {
       console.log(res)
       var response = JSON.parse(res.text)
-      console.log(response)
       issues.push(response.issue)
       _this.setState({
         issues: issues
       }, function() {
-          _this.refs.issue.getDOMNode().value = null
+        _this.refs.issue.getDOMNode().value = null
       })
     })
+
+
+  }, function(error){
+    console.log(error);
+  })
+
 
   },
   
@@ -112,8 +137,7 @@ var ProjectTemplate = React.createClass({
       })
   },
  
-  showIssue: function(event, childComponent) {
-    event.preventDefault()
+  showIssue: function(childComponent) {
     var issue = childComponent.props.issue
     this.setState({
       activeIssue: issue
