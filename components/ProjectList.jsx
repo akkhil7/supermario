@@ -9,38 +9,16 @@ var Link          = Router.Link;
 
 var Request       = require('superagent')
 var _             = require('lodash')
-
-//import components
+var Reflux        = require('reflux')
+var projectsStore = require('../store/projectsStore.js')
 var ProjectBox    = require('./ProjectBox.jsx');
 
 var ProjectList = React.createClass({
-  mixins : [Router.Navigation],
-  getInitialState: function(){
-    return { 
-      projects: []
-    }
-  },
+  mixins : [Router.Navigation, Reflux.connect(projectsStore)],
 
-  componentDidMount: function () {
-    var _this = this;
-    var url   = "http://localhost:3000/projects"
-    Request.get(url, function (res) {
-      var response = JSON.parse(res.text);
-      /** _asynchronous and synchronous js code _. when the req is sent, rest of the code won't wait for the req completion. it'll run and it'll transition
-      /* to the other component. what was happening was you had already transitioned then it tried to change the state and add projects but that
-      /* component wasn't there then. you tried to go the next component and tried to setState of previous component.
-      **/
-      if (_this.isMounted()) {
-        _this.setState({
-          projects: response.projects
-        })
-        if (response.projects.length === 0) {
-          _this.transitionTo('newproject')
-        }
-      }
-    })
+  componentWillMount: function(){
+    projectsStore.init();
   },
-
   addProject: function () {
     var _this = this;
     var project = {
@@ -111,7 +89,8 @@ var ProjectList = React.createClass({
   render: function() {
     var _this = this;
     var projects = this.state.projects;
-    if(projects.length>0){
+    console.log(projects)
+    if(true){
       var display = projects.map(function(project){
                     return <ProjectBox deleted={_this.deleteProject} project={project} />
                     })

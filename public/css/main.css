@@ -691,14 +691,15 @@ button, input[type="submit"] {
     text-align: center;
     margin-left: 17.05961%;
     padding-bottom: 5px;
-    border-bottom: 2px solid white;
+    border-bottom: 1px solid #333;
     margin-bottom: 10px; }
     .issue-sidebar h2:last-child {
       margin-right: 0; }
   .issue-sidebar .close {
     position: absolute;
     top: 0;
-    right: 0; }
+    left: 0;
+    color: red; }
 
 .issue-sidebar-desc input[type="text"] {
   border: none;

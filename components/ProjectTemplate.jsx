@@ -10,24 +10,27 @@ var RouteHandler  = Router.RouteHandler;
 var Link          = Router.Link;
 var Route         = Router.Route;
 
-var Request       = require('superagent')
-var _             = require('lodash')
+var Request       = require('superagent');
+var _             = require('lodash');
+var Reflux        = require('reflux');
     
-var Gravatar      = require('./Gravatar.jsx')
-var IssueBox      = require('./IssueBox.jsx')
-var IssueSidebar  = require('./IssueSidebar.jsx')
-
+var Gravatar      = require('./Gravatar.jsx');
+var IssueBox      = require('./IssueBox.jsx');
+var IssueSidebar  = require('./IssueSidebar.jsx');
+var issueStore    = require('../store/issueStore.js');
 
 var ProjectTemplate = React.createClass({
-  mixins: [ Router.State, Router.Navigation ],
-  getInitialState: function() {
-    return {
-      project: [],
-      issues: [],
-      activeIssue: undefined,
-    }
-  },
   
+mixins: [ Router.State, Router.Navigation, Reflux.connect(issueStore) ],
+
+getInitialState: function() {
+  return {
+    project: undefined
+  }
+},
+componentWillMount: function() {
+  issueStore.init();
+},
 componentDidMount: function() {
   var id = this.getParams().id;
   var url = "http://localhost:3000/projects/"+id
@@ -40,14 +43,6 @@ componentDidMount: function() {
     })
   })  
 
-
-  Request.get("http://localhost:3000/issues/", function(res){
-    var response = JSON.parse(res.text)
-    var issues = response.issues
-    _this.setState({
-      issues: issues
-    })
-  })
 },
 
 
