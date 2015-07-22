@@ -28,9 +28,11 @@ getInitialState: function() {
     project: undefined
   }
 },
+
 componentWillMount: function() {
   issueStore.init();
 },
+
 componentDidMount: function() {
   var id = this.getParams().id;
   var url = "http://localhost:3000/projects/"+id
@@ -82,26 +84,12 @@ addIssue: function(e) {
       assigned_to_id: response.id,
       priority: "Low"
     }
+
     
-    Request
-    .post(url)
-    .send({issue: issue})
-    .end(function(err,res) {
-      console.log(res)
-      var response = JSON.parse(res.text)
-      issues.push(response.issue)
-      _this.setState({
-        issues: issues
-      }, function() {
-        _this.refs.issue.getDOMNode().value = null
-      })
-    })
+    issueStore.onAddIssue(issue);
+    _this.refs.issue.getDOMNode().value = null
 
-
-  }, function(error){
-    console.log(error);
-  })
-
+  });
 
   },
   
