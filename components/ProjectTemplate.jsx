@@ -30,7 +30,7 @@ getInitialState: function() {
 },
 
 componentWillMount: function() {
-  issueStore.init();
+  // issueStore.init();
 },
 
 componentDidMount: function() {
@@ -86,7 +86,7 @@ addIssue: function(e) {
     }
 
     
-    issueStore.onAddIssue(issue);
+    issueStore.onAddIssue(issue, issues);
     _this.refs.issue.getDOMNode().value = null
 
   });
