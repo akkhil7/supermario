@@ -1,6 +1,6 @@
 "use strict";
-
 var React         = require('react');
+var CTG   = React.addons.CSSTransitionGroup
 var Router        = require('react-router');
 var DocumentTitle = require('react-document-title');
 var Request        = require('superagent');
@@ -39,7 +39,6 @@ var IssueSidebar = React.createClass({
     var issue = this.props.issue
     var title = _.capitalize(issue.title)
     var comments = this.state.comments
-    console.log(issue)
     var assigned_to = issue.assigned_to.username
     if(!_.isEmpty(comments))
       {
@@ -47,12 +46,13 @@ var IssueSidebar = React.createClass({
           return <CommentBox comment={comment} />
         })
       }
-    return (
-      <div className="issue-sidebar">
+      return (
+      <CTG transitionName="issue-sidebar">
+        <div key={Math.random()} className="issue-sidebar">
         <a href="#" onClick={this.hideIssue} className="close">
-        <i className="fa fa-times fa-2x"> </i> </a>
-      <h2>{title}</h2>
-      <div className="issue-sidebar-desc">
+        <i key={Math.random()} className="fa fa-times fa-2x"> </i> </a>
+        <h2>{title}</h2>
+      <div key={Math.random()} className="issue-sidebar-desc">
         {displayComments}
         <form onSubmit={this.handleSubmit}>
           <input type="text" ref="comment" placeholder={issue.body} />
@@ -61,7 +61,8 @@ var IssueSidebar = React.createClass({
       </div>
       <span>Assigned to: @{assigned_to}</span>
 
-      </div>
+    </div>
+  </CTG>
     );
   }
 });

@@ -713,6 +713,21 @@ button, input[type="submit"] {
   border: 1px solid #0486ff;
   transition: border 500ms; }
 
+.issue-sidebar-enter {
+  right: 500px;
+  transition: all 1s; }
+
+.issue-sidebar-enter-active {
+  right: 0px; }
+
+.issue-sidebar-leave {
+  right: 0px;
+  opacity: 0;
+  transition: all 1s; }
+
+.issue-sidebar-leave-active {
+  right: 500px; }
+
 /*!
  *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
