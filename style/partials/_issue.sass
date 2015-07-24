@@ -69,7 +69,14 @@
     position: absolute
     top: 0
     left: 0
-    color: red
+    color: #333
+  .close:hover
+    color: $red-color
+    transition: color 300ms
+
+  h4
+    +span-columns(8)
+    font-weight: 400
 
 .issue-sidebar-desc
 
@@ -83,9 +90,10 @@
     position: absolute
     left: -9999px
 
-  input:focus
-    border: 1px solid $blue-color
-    transition: border 500ms
+  input[type="text"]:focus
+    border: 1px solid #333
+    border-color: $blue-color
+    transition: border-color 300ms
 
 .issue-sidebar-enter
   right: 500px

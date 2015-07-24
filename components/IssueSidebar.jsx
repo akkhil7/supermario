@@ -4,33 +4,42 @@ var CTG   = React.addons.CSSTransitionGroup
 var Router        = require('react-router');
 var DocumentTitle = require('react-document-title');
 var Request        = require('superagent');
+var Reflux        = require('reflux')
+var issueStore    = require('../store/issueStore.js')
 
 var IssueSidebar = React.createClass({
+  mixins: [Reflux.connect(issueStore)],
 
-  getInitialState: function() {
-    return {
-      comments: []
-    }
-  },
+  
   hideIssue: function(){
     this.props.hideIssue(this)
   },
 
-  handleSubmit: function(){
 
+  componentWillMount: function(){
+
+    // issueStore.init();
+  },
+
+  handleSubmit: function(e){
+    e.preventDefault();
     var issue = this.props.issue
-    var comment = this.refs.comment.getDOMNode().value
+    var comment = {
+      body: this.refs.comment.getDOMNode().value,
+      issue_id: issue.id
+    }
+    var issues = this.state.issues
+    console.log(issues)
     var _this = this
-    var url = "http://localhost:3000/comments/"
+    var url = "http://localhost:3000/issues/"+issue.id+"/comments/"
     Request
       .post(url)
       .send({comment:comment})
       .end(function (err,res) {
         var response = JSON.parse(res.text)
-        console.log(res)
-        _this.setState({
-          comment: response.comment
-        })
+        console.log(response.comment)
+        issue.comments.push(response.comment)
+        issueStore.onUpdateIssue(issue,issues)
       })
   },
 
@@ -52,7 +61,8 @@ var IssueSidebar = React.createClass({
         <a href="#" onClick={this.hideIssue} className="close">
         <i key={Math.random()} className="fa fa-times fa-2x"> </i> </a>
         <h2>{title}</h2>
-      <div key={Math.random()} className="issue-sidebar-desc">
+        <div className="issue-sidebar-desc">
+          <h4> Comments </h4>
         {displayComments}
         <form onSubmit={this.handleSubmit}>
           <input type="text" ref="comment" placeholder={issue.body} />

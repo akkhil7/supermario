@@ -699,7 +699,18 @@ button, input[type="submit"] {
     position: absolute;
     top: 0;
     left: 0;
-    color: red; }
+    color: #333; }
+  .issue-sidebar .close:hover {
+    color: #c64949;
+    transition: color 300ms; }
+  .issue-sidebar h4 {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 65.88078%;
+    font-weight: 400; }
+    .issue-sidebar h4:last-child {
+      margin-right: 0; }
 
 .issue-sidebar-desc input[type="text"] {
   border: none;
@@ -709,9 +720,10 @@ button, input[type="submit"] {
 .issue-sidebar-desc input[type="submit"] {
   position: absolute;
   left: -9999px; }
-.issue-sidebar-desc input:focus {
-  border: 1px solid #0486ff;
-  transition: border 500ms; }
+.issue-sidebar-desc input[type="text"]:focus {
+  border: 1px solid #333;
+  border-color: #0486ff;
+  transition: border-color 300ms; }
 
 .issue-sidebar-enter {
   right: 500px;
