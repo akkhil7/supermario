@@ -672,6 +672,7 @@ button, input[type="submit"] {
   margin-right: 2.35765%;
   width: 31.76157%;
   margin-right: 0;
+  z-index: 9999;
   background-color: white;
   color: #333;
   position: absolute;
@@ -726,7 +727,7 @@ button, input[type="submit"] {
   transition: border-color 300ms; }
 
 .issue-sidebar-enter {
-  right: 500px;
+  right: -500px;
   transition: all 1s; }
 
 .issue-sidebar-enter-active {

@@ -10,7 +10,7 @@ var CommentBox = React.createClass({
     var comment=this.props.comment
     return (
       <div className="comment-box-wrapper">
-        {comment.body}
+        <p> {comment.body} </p>
       </div>
 
       

@@ -47,6 +47,7 @@
 .issue-sidebar
   +span-columns(4)
   +omega()
+  z-index: 9999
   background-color: white
   color: #333
   position: absolute
@@ -96,7 +97,7 @@
     transition: border-color 300ms
 
 .issue-sidebar-enter
-  right: 500px
+  right: -500px
   transition: all 1s
 
 .issue-sidebar-enter-active

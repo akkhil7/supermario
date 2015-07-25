@@ -1,7 +1,7 @@
 var Reflux = require('reflux')
 
 var issuesActions = Reflux.createActions({
-  ["addIssue"]
+  ["addIssue","updateIssue"]
 })
 
 module.exports = issuesActions

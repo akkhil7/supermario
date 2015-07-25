@@ -25,12 +25,9 @@ mixins: [ Router.State, Router.Navigation, Reflux.connect(issueStore) ],
 
 getInitialState: function() {
   return {
-    project: undefined
+    project: undefined,
+    activeIssue: undefined
   }
-},
-
-componentWillMount: function() {
-  // issueStore.init();
 },
 
 componentDidMount: function() {
@@ -77,7 +74,6 @@ addIssue: function(e) {
  this.currentUser().then(function(response){
 
     response = JSON.parse(response).user
-
     var issue = {
       title: issue_title,
       project_id: p_id,
@@ -86,7 +82,7 @@ addIssue: function(e) {
     }
 
     
-    issueStore.onAddIssue(issue, issues);
+    issueStore.onAddIssue(issue);
     _this.refs.issue.getDOMNode().value = null
 
   });
@@ -96,9 +92,7 @@ addIssue: function(e) {
   updateIssue: function(issueBox){
 
     var issue = issueBox.props.issue
-    
     var url = "http://localhost:3000/issues/"+issue.id;
-
     var issues = this.state.issues
     var _this = this
 
@@ -118,9 +112,10 @@ addIssue: function(e) {
             })
           })
       })
-  },
+      },
  
   showIssue: function(childComponent) {
+    //to grab issue from IssueBox and make it the activeissue
     var issue = childComponent.props.issue
     this.setState({
       activeIssue: issue
@@ -129,7 +124,7 @@ addIssue: function(e) {
   },
 
   hideIssue: function(childComponent) {
-    
+    //to make the current issue inactive
     this.setState({
       activeIssue: undefined
     })
@@ -138,6 +133,7 @@ addIssue: function(e) {
   render: function() {
     var project = this.state.project
     var issues = this.state.issues
+    console.log(this.state)
     var activeIssue = this.state.activeIssue
     var showIssueSidebar;
     var _this = this;

@@ -16,9 +16,6 @@ var ProjectBox    = require('./ProjectBox.jsx');
 var ProjectList = React.createClass({
   mixins : [Router.Navigation, Reflux.connect(projectsStore)],
 
-  componentWillMount: function(){
-    projectsStore.init();
-  },
   addProject: function () {
     var _this = this;
     var project = {

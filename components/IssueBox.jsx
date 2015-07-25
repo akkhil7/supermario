@@ -3,6 +3,7 @@
 var React         = require('react');
 var Router        = require('react-router');
 var DocumentTitle = require('react-document-title');
+var _             = require('lodash')
 
 var IssueBox = React.createClass({
 getInitialState: function() {

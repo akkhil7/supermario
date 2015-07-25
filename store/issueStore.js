@@ -8,15 +8,25 @@ var issueStore = Reflux.createStore({
         activeIssue: undefined
       },
 
-  onAddIssue: function(issue, issues){
+  onUpdateIssue: function(issue){
+    var _this = this
+    var issues = this.data.issues
+    Request.put("http://localhost:3000/issues/"+issue.id)
+    .send({issue:issue})
+    .end(function(res, err){
+      issues = _.without(issues,issue);
+      issues.push(issue)
+      _this.trigger(_this.data)
+    })
+    },
+  onAddIssue: function(issue){
     console.log(this.data)
-    var issues = issues
     var _this = this
     Request.post("http://localhost:3000/issues")
     .send({issue:issue})
     .end(function(err,res){
-      issues.push(issue)
-      _this.trigger({issues:issues})
+      _this.data.issues.push(issue)
+      _this.trigger(_this.data)
     })
   },
   
@@ -27,14 +37,13 @@ var issueStore = Reflux.createStore({
     Request.get("http://localhost:3000/issues/", function(res) {
       var response = JSON.parse(res.text);
       var issues = response.issues;
-      _this.trigger({issues:issues})
-      
-  })
+      _this.data.issues = issues;
+      _this.trigger(_this.data)  
+    })
   },
   
   getInitialState: function(){
-    var i = 0;
-    return this.data;
+    return this.data
   }
 })
 
