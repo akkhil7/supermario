@@ -25,7 +25,8 @@ var issueStore = Reflux.createStore({
     Request.post("http://localhost:3000/issues")
     .send({issue:issue})
     .end(function(err,res){
-      _this.data.issues.push(issue)
+      var response = JSON.parse(res.text).issue
+      _this.data.issues.push(response)
       _this.trigger(_this.data)
     })
   },

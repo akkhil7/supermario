@@ -12,9 +12,9 @@ getInitialState: function() {
   }
 },
 
-handleClick: function(){
+handleClick: function(e){
   
-  this.props.showIssue(this)
+  this.props.showIssue(this, e)
 
 },
 handlePriority: function(e){

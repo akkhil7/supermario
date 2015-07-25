@@ -114,8 +114,9 @@ addIssue: function(e) {
       })
       },
  
-  showIssue: function(childComponent) {
+  showIssue: function(childComponent, evt) {
     //to grab issue from IssueBox and make it the activeissue
+    evt.preventDefault();
     var issue = childComponent.props.issue
     this.setState({
       activeIssue: issue
@@ -133,7 +134,7 @@ addIssue: function(e) {
   render: function() {
     var project = this.state.project
     var issues = this.state.issues
-    console.log(this.state)
+    //console.log(this.state)
     var activeIssue = this.state.activeIssue
     var showIssueSidebar;
     var _this = this;

@@ -7,6 +7,7 @@ var Request        = require('superagent');
 var Reflux        = require('reflux')
 var issueStore    = require('../store/issueStore.js')
 var CommentBox    = require('./CommentBox.jsx');
+var _             = require('lodash')
 
 var IssueSidebar = React.createClass({
   mixins: [Reflux.connect(issueStore)],
