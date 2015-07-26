@@ -5,7 +5,7 @@ var issuesActions = require('../actions/issuesActions.js');
 var issueStore = Reflux.createStore({
   listenables: [issuesActions],
   data:{issues: [],
-        activeIssue: undefined
+        activeIssue: undefined,
       },
 
   onUpdateIssue: function(issue){

@@ -12,15 +12,22 @@ var _             = require('lodash')
 var IssueSidebar = React.createClass({
   mixins: [Reflux.connect(issueStore)],
 
+  getInitialState: function() {
+    return {
+      enter: this.props.enter,
+      leave: this.props.enter
+    }
+  },
   
-  hideIssue: function(){
-    this.props.hideIssue(this)
+  hideIssue: function(e){
+    this.props.hideIssue(this, e)
+    
   },
 
-
-  componentWillMount: function(){
-
-    // issueStore.init();
+  componentDidMount: function(){
+    this.setState({
+      activeIssue: this.props.issue
+    })
   },
 
   handleSubmit: function(e){
@@ -31,7 +38,6 @@ var IssueSidebar = React.createClass({
       issue_id: issue.id
     }
     var issues = this.state.issues
-    console.log(issues)
     var _this = this
     var url = "http://localhost:3000/issues/"+issue.id+"/comments/"
     Request
@@ -39,13 +45,15 @@ var IssueSidebar = React.createClass({
       .send({comment:comment})
       .end(function (err,res) {
         var response = JSON.parse(res.text)
-        console.log(response.comment)
         issue.comments.push(response.comment)
-        issueStore.onUpdateIssue(issue)
+        _this.setState({
+          enter: false,
+          leave: false
+        })
+
       })
   },
 
-  
   render: function() {
     var issue = this.props.issue
     var title = _.capitalize(issue.title)
@@ -58,7 +66,7 @@ var IssueSidebar = React.createClass({
         })
       }
       return (
-      <CTG transitionName="issue-sidebar">
+        <CTG transitionName="issue-sidebar">
         <div key={Math.random()} className="issue-sidebar">
         <a href="#" onClick={this.hideIssue} className="close">
         <i className="fa fa-times fa-2x"> </i> </a>

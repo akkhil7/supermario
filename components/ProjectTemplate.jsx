@@ -26,7 +26,8 @@ mixins: [ Router.State, Router.Navigation, Reflux.connect(issueStore) ],
 getInitialState: function() {
   return {
     project: undefined,
-    activeIssue: undefined
+    activeIssue: undefined,
+    isActive: false
   }
 },
 
@@ -114,27 +115,30 @@ addIssue: function(e) {
       })
       },
  
-  showIssue: function(childComponent, evt) {
+  showIssue: function(issueBox, evt) {
     //to grab issue from IssueBox and make it the activeissue
     evt.preventDefault();
-    var issue = childComponent.props.issue
+ 
+    var issue = issueBox.props.issue
     this.setState({
       activeIssue: issue
     })
   
   },
 
-  hideIssue: function(childComponent) {
+  hideIssue: function(issueSidebar,e) {
     //to make the current issue inactive
+    e.preventDefault();
+    
     this.setState({
       activeIssue: undefined
     })
 
   },
+
   render: function() {
     var project = this.state.project
     var issues = this.state.issues
-    //console.log(this.state)
     var activeIssue = this.state.activeIssue
     var showIssueSidebar;
     var _this = this;
@@ -155,7 +159,8 @@ addIssue: function(e) {
       }
 
     if(showIssue)
-      showIssueSidebar = <IssueSidebar hideIssue={this.hideIssue} issue={activeIssue} isActive={true} />
+      showIssueSidebar = <IssueSidebar hideIssue={this.hideIssue} 
+                          issue={activeIssue}/>
     
     return(
       <div className="project-template">
