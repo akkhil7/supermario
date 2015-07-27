@@ -27,7 +27,6 @@ getInitialState: function() {
   return {
     project: undefined,
     activeIssue: undefined,
-    isActive: false
   }
 },
 
@@ -118,7 +117,6 @@ addIssue: function(e) {
   showIssue: function(issueBox, evt) {
     //to grab issue from IssueBox and make it the activeissue
     evt.preventDefault();
- 
     var issue = issueBox.props.issue
     this.setState({
       activeIssue: issue
@@ -126,10 +124,9 @@ addIssue: function(e) {
   
   },
 
-  hideIssue: function(issueSidebar,e) {
+  hideIssue: function(e) {
     //to make the current issue inactive
     e.preventDefault();
-    
     this.setState({
       activeIssue: undefined
     })
@@ -154,14 +151,16 @@ addIssue: function(e) {
     if(issues.length > 0)
       {
       var display = issues.map(function(issue){
-                      return <IssueBox showIssue={_this.showIssue} issue={issue} updateIssue={_this.updateIssue} />
+        return <IssueBox showIssue={_this.showIssue} 
+                issue={issue} 
+                updateIssue={_this.updateIssue} />
                       })
       }
 
     if(showIssue)
       showIssueSidebar = <IssueSidebar hideIssue={this.hideIssue} 
                           issue={activeIssue}/>
-    
+    console.log(showIssueSidebar)
     return(
       <div className="project-template">
         <h2>{name}</h2>

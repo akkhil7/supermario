@@ -1,9 +1,10 @@
 "use strict";
+
 var React         = require('react');
-var CTG   = React.addons.CSSTransitionGroup
+var CTG           = React.addons.CSSTransitionGroup
 var Router        = require('react-router');
 var DocumentTitle = require('react-document-title');
-var Request        = require('superagent');
+var Request       = require('superagent');
 var Reflux        = require('reflux')
 var issueStore    = require('../store/issueStore.js')
 var CommentBox    = require('./CommentBox.jsx');
@@ -14,20 +15,27 @@ var IssueSidebar = React.createClass({
 
   getInitialState: function() {
     return {
-      enter: this.props.enter,
-      leave: this.props.enter
-    }
+      shouldAnimate: false
+      }
   },
   
   hideIssue: function(e){
-    this.props.hideIssue(this, e)
-    
+    this.props.hideIssue(e)
   },
 
   componentDidMount: function(){
     this.setState({
       activeIssue: this.props.issue
     })
+    /*if(this.state.shouldAnimate)
+      this.setState({
+        shouldAnimate: false
+      })
+    else
+      this.setState({
+        shouldAnimate: true
+      })
+      */
   },
 
   handleSubmit: function(e){
@@ -47,46 +55,67 @@ var IssueSidebar = React.createClass({
         var response = JSON.parse(res.text)
         issue.comments.push(response.comment)
         _this.setState({
-          enter: false,
-          leave: false
+          shouldAnimate: false
         })
 
       })
   },
 
-  render: function() {
+  layout: function () {
     var issue = this.props.issue
     var title = _.capitalize(issue.title)
     var comments = this.props.issue.comments
     var assigned_to = issue.assigned_to.username
-    if(!_.isEmpty(comments))
-      {
-        var displayComments = comments.map(function(comment){
-          return <CommentBox comment={comment} />
-        })
-      }
-      return (
-        <CTG transitionName="issue-sidebar">
-        <div key={Math.random()} className="issue-sidebar">
-        <a href="#" onClick={this.hideIssue} className="close">
-        <i className="fa fa-times fa-2x"> </i> </a>
-        <h2>{title}</h2>
-        <div className="issue-sidebar-desc">
-          <div>
-            <h4> Comments </h4>
-            {displayComments}
-          </div>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" ref="comment" placeholder={issue.body} />
-          <input type="submit" />
-        </form>
-      </div>
-      <span>Assigned to: @{assigned_to}</span>
+    if (!_.isEmpty(comments)) {
+      var displayComments = comments.map(function(comment){
+        return <CommentBox comment={comment} />
+      })
+    }
 
-    </div>
-  </CTG>
+    return (
+        <div key={Math.random()} className="issue-sidebar">
+          <a href="#" onClick={this.hideIssue} className="close">
+          <i className="fa fa-times fa-2x"> </i> </a>
+          <h2>{title}</h2>
+          <div className="issue-sidebar-desc">
+            <div>
+              <h4> Comments </h4>
+              {displayComments}
+            </div>
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" ref="comment" placeholder={issue.body} />
+            <input type="submit" />
+          </form>
+        </div>
+        <span>Assigned to: @{assigned_to}</span>
+      </div>
+    )
+  },
+
+  componentDidUpdate: function(){
+    if(this.state.shouldAnimate)
+      this.setState({
+        shouldAnimate: false
+      })
+    else
+      this.setState({
+        shouldAnimate: true
+      })
+
+  },
+  
+  animatedLayout: function () {
+    return (
+      <CTG transitionName="issue-sidebar">
+        {this.layout()}
+      </CTG>
     );
+  },
+
+  render: function() {
+    return (this.state.shouldAnimate ? this.animatedLayout() : this.layout())
   }
 });
 
 module.exports = IssueSidebar;
+
