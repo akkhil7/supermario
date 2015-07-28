@@ -15,7 +15,7 @@ var IssueSidebar = React.createClass({
 
   getInitialState: function() {
     return {
-      shouldAnimate: false
+      shouldAnimate: true
       }
   },
   
@@ -23,19 +23,11 @@ var IssueSidebar = React.createClass({
     this.props.hideIssue(e)
   },
 
-  componentDidMount: function(){
-    this.setState({
-      activeIssue: this.props.issue
-    })
-    /*if(this.state.shouldAnimate)
-      this.setState({
-        shouldAnimate: false
-      })
-    else
+  componentWillUpdate: function(){
+    if(!this.state.shouldAnimate)
       this.setState({
         shouldAnimate: true
-      })
-      */
+       })
   },
 
   handleSubmit: function(e){
@@ -90,18 +82,6 @@ var IssueSidebar = React.createClass({
         <span>Assigned to: @{assigned_to}</span>
       </div>
     )
-  },
-
-  componentDidUpdate: function(){
-    if(this.state.shouldAnimate)
-      this.setState({
-        shouldAnimate: false
-      })
-    else
-      this.setState({
-        shouldAnimate: true
-      })
-
   },
   
   animatedLayout: function () {

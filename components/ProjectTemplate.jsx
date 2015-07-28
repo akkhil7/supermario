@@ -160,7 +160,6 @@ addIssue: function(e) {
     if(showIssue)
       showIssueSidebar = <IssueSidebar hideIssue={this.hideIssue} 
                           issue={activeIssue}/>
-    console.log(showIssueSidebar)
     return(
       <div className="project-template">
         <h2>{name}</h2>

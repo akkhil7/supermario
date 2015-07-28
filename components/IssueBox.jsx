@@ -13,7 +13,7 @@ getInitialState: function() {
 },
 
 handleClick: function(e){
-  
+  e.preventDefault();
   this.props.showIssue(this, e)
 
 },
