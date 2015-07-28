@@ -25,9 +25,15 @@ mixins: [ Router.State, Router.Navigation, Reflux.connect(issueStore) ],
 
 getInitialState: function() {
   return {
-    project: undefined,
-    activeIssue: undefined,
+    project: undefined
   }
+},
+
+shouldComponentUpdate: function(nextProps,nextState){
+
+  if(nextState.activeIssue != undefined)
+    return(nextState.activeIssue != this.state.activeIssue)
+  return true;
 },
 
 componentDidMount: function() {
@@ -88,6 +94,7 @@ addIssue: function(e) {
   });
 
   },
+
   
   updateIssue: function(issueBox){
 

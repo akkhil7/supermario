@@ -119,7 +119,26 @@
   margin: 10px 0
   border: none
   padding: 5px 10px
+  
   h4
     +span-columns(12)
 
-.comment-gravatar
+.issue-sidebar-menu
+  +span-columns(12)
+  border-radius: 5px
+  border: 1px solid #7bbefc
+  padding: 8px 5px
+  margin-bottom: 20px
+
+  i
+    +span-columns(4)
+    cursor: pointer
+    text-align: center
+    border-right: 1px solid #ccc
+  
+  i:last-child
+    +omega()
+    border-right: none
+
+  i:hover
+    color: $blue-color

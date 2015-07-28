@@ -23,8 +23,8 @@ var IssueSidebar = React.createClass({
     this.props.hideIssue(e)
   },
 
-  componentWillUpdate: function(){
-    if(!this.state.shouldAnimate)
+  componentDidUpdate: function(){
+    if(!this.state.shouldAnimate) //makes it normal
       this.setState({
         shouldAnimate: true
        })
@@ -49,8 +49,13 @@ var IssueSidebar = React.createClass({
         _this.setState({
           shouldAnimate: false
         })
-
+        //UPDATES COMPONENT. didUpdate() is invoked.
       })
+  },
+
+  handleMenuClick: function(){
+
+    console.log("I'll be handling you guys")
   },
 
   layout: function () {
@@ -70,10 +75,14 @@ var IssueSidebar = React.createClass({
           <i className="fa fa-times fa-2x"> </i> </a>
           <h2>{title}</h2>
           <div className="issue-sidebar-desc">
-            <div>
-              <h4> Comments </h4>
-              {displayComments}
+            <div className="issue-sidebar-menu">
+              <i value="info" className="item fa fa-info fa" onClick={this.handleMenuClick}> </i>
+              <i value="files" className="item fa fa-file-o fa" onClick={this.handleMenuClick}> </i>
+              <i value="comments" className="item fa fa-comment-o fa" onClick={this.handleMenuClick}> </i>
             </div>
+            <h4> Comments </h4>
+            {displayComments}
+
           <form onSubmit={this.handleSubmit}>
             <input type="text" ref="comment" placeholder={issue.body} />
             <input type="submit" />

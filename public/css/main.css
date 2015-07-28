@@ -762,6 +762,33 @@ button, input[type="submit"] {
     .comment-box-wrapper h4:last-child {
       margin-right: 0; }
 
+.issue-sidebar-menu {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #7bbefc;
+  padding: 8px 5px;
+  margin-bottom: 20px; }
+  .issue-sidebar-menu:last-child {
+    margin-right: 0; }
+  .issue-sidebar-menu i {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 31.76157%;
+    cursor: pointer;
+    text-align: center;
+    border-right: 1px solid #ccc; }
+    .issue-sidebar-menu i:last-child {
+      margin-right: 0; }
+  .issue-sidebar-menu i:last-child {
+    margin-right: 0;
+    border-right: none; }
+  .issue-sidebar-menu i:hover {
+    color: #0486ff; }
+
 /*!
  *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
