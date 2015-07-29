@@ -16,21 +16,60 @@ var IssueSidebar = React.createClass({
 
   getInitialState: function() {
     return {
-      shouldAnimate: true,
-      activeOption: "info"
+      //shouldAnimate: true,
+      //activeOption: "info"
       }
-  },
+  },   
+  /*
+  componentWillMount: function(){
+     this.props.hideIssue()
+     },*/
+
   
   hideIssue: function(e){
     this.props.hideIssue(e)
   },
 
-  componentDidUpdate: function(){
+  /* componentDidUpdate: function(nextProps, nextState){
     if(!this.state.shouldAnimate) //makes it normal
       this.setState({
         shouldAnimate: true
-       })
+      }) 
+      /*
+    console.log("invoked")
+    if(nextProps.issue != this.props.issue && !this.state.shouldAnimate)
+      { this.setState({
+          activeOption: "info",
+          shouldAnimate: true
+         })
+         }*/
+   
+   
+   componentWillUnmount: function(){
+     console.log("unmounting BITCH")
+   },
+
+   componentWillMount: function() {
+     console.log("gonna mount");
+   },
+  /*componentWillReceiveProps: function(nextProps){
+    if(!this.state.shouldAnimate && nextProps.issue != this.props.issue)
+      this.setState({
+        shouldAnimate: true
+      })
+      console.log(this.state.shouldAnimate);
   },
+
+  componentWillUpdate: function(nextProps, nextState){
+    if(!this.state.shouldAnimate && nextProps.issue != this.props.issue)
+      this.setState({
+        shouldAnimate: true
+      })
+      console.log("Will Update" + this.state.shouldAnimate);
+
+  },
+  */
+
 
   handleSubmit: function(e){
     e.preventDefault();
@@ -48,9 +87,9 @@ var IssueSidebar = React.createClass({
       .end(function (err,res) {
         var response = JSON.parse(res.text)
         issue.comments.push(response.comment)
-        _this.setState({
+        /*_this.setState({
           shouldAnimate: false
-        })
+          })*/
         //UPDATES COMPONENT. didUpdate() is invoked.
       })
   },
@@ -60,10 +99,10 @@ var IssueSidebar = React.createClass({
     console.log("I'll be handling you guys")
     var option = e.target.getAttribute("value");
     console.log(option);
-    this.setState({
+    /*this.setState({
       activeOption: option,
       shouldAnimate: false
-    })
+      })*/
   },
 
   layout: function () {
@@ -109,7 +148,8 @@ var IssueSidebar = React.createClass({
   },
 
   render: function() {
-    return (this.state.shouldAnimate ? this.animatedLayout() : this.layout())
+    // return (this.state.shouldAnimate ? this.animatedLayout() : this.layout())
+     return (this.animatedLayout())
   }
 });
 

@@ -779,15 +779,23 @@ button, input[type="submit"] {
     cursor: pointer;
     color: #0486ff;
     text-align: center;
-    padding-bottom: 5px; }
+    padding-bottom: 5px;
+    border-bottom: 1px solid white; }
     .issue-sidebar-menu i:last-child {
       margin-right: 0; }
   .issue-sidebar-menu i:last-child {
     margin-right: 0; }
   .issue-sidebar-menu i:hover {
-    transform: rotate(360deg);
-    border-bottom: 1px solid #0486ff;
-    transition: transform 200ms ease-in, border-bottom 200ms ease-out; }
+    transform: scale(1.2) rotate(360deg);
+    transition: border-bottom 200ms, transform 200ms;
+    border-bottom: 1px solid #0486ff; }
+  .issue-sidebar-menu .menu-wrapper {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 100%; }
+    .issue-sidebar-menu .menu-wrapper:last-child {
+      margin-right: 0; }
 
 /*!
  *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome

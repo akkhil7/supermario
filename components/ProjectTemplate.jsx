@@ -25,17 +25,44 @@ mixins: [ Router.State, Router.Navigation, Reflux.connect(issueStore) ],
 
 getInitialState: function() {
   return {
-    project: undefined
+    project: undefined,
+    isActive: false
   }
 },
 
 shouldComponentUpdate: function(nextProps,nextState){
-
-  if(nextState.activeIssue != undefined)
-    return(nextState.activeIssue != this.state.activeIssue)
+  //nextState and thisState returns true when 
+  if(this.state.activeIssue != undefined)
+    {
+      if(nextState.activeIssue == this.state.activeIssue)
+        return false;
+      /*else if(this.state.isActive == true && nextState.isActive == false &&
+              nextState.activeIssue !=undefined)
+        {
+          console.log("satisfied");
+          return false; 
+        }*/
+          
+    }
   return true;
 },
 
+componentWillUpdate: function(nextProps, nextState) {
+  var _this = this
+  if(this.state.isActive && nextState.isActive && nextState.activeIssue != this.state.activeIssue)
+    this.setState({
+      isActive: false
+    }, function() {
+      console.log("gonna set it to true")
+    _this.setState({
+      isActive: true,
+      activeIssue: nextState.activeIssue
+    })
+    _this.forceUpdate();
+    }
+    )
+
+                 },
 componentDidMount: function() {
   var id = this.getParams().id;
   var url = "http://localhost:3000/projects/"+id
@@ -125,32 +152,41 @@ addIssue: function(e) {
     //to grab issue from IssueBox and make it the activeissue
     evt.preventDefault();
     var issue = issueBox.props.issue
-    this.setState({
-      activeIssue: issue
-    })
-  
+    var isActive = this.state.isActive
+    var _this = this
+    /*if(isActive)
+      { console.log("gonna set isActive to false");
+        this.setState({
+          isActive: false
+        })
+        }*/
+      this.setState({
+        activeIssue: issue,
+        isActive: true
+      })
   },
 
   hideIssue: function(e) {
     //to make the current issue inactive
-    e.preventDefault();
+    if(!_.isEmpty(e))
+      e.preventDefault();
+    var isActive = this.state.isActive
     this.setState({
-      activeIssue: undefined
+      activeIssue: undefined,
+      isActive: !isActive
     })
 
   },
 
   render: function() {
+    console.log(this.state.isActive)
     var project = this.state.project
     var issues = this.state.issues
     var activeIssue = this.state.activeIssue
+    var isActive = this.state.isActive
     var showIssueSidebar;
     var _this = this;
     
-    if(activeIssue !== undefined)
-      var showIssue = true
-    else
-      var showIssue = false
 
     if(!_.isEmpty(project))
       var name = project.name.toUpperCase()
@@ -163,8 +199,8 @@ addIssue: function(e) {
                 updateIssue={_this.updateIssue} />
                       })
       }
-
-    if(showIssue)
+    
+    if(isActive)
       showIssueSidebar = <IssueSidebar hideIssue={this.hideIssue} 
                           issue={activeIssue}/>
     return(

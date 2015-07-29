@@ -134,12 +134,19 @@
     color: $blue-color
     text-align: center
     padding-bottom: 5px
-  
+    border-bottom: 1px solid white
+
+
   i:last-child
     +omega()
 
   i:hover
-    transform: rotate(360deg)
+    transform: scale(1.2) rotate(360deg)
+    transition: border-bottom 200ms, transform 200ms
     border-bottom: 1px solid $blue-color
-    transition: transform 200ms ease-in, border-bottom 200ms ease-out 
+
+  
+  .menu-wrapper
+    h3
+    +span-columns(12)
 

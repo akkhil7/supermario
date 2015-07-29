@@ -12,19 +12,22 @@ var MenuWrapper = React.createClass({
     var option = this.props.option
     var issue = this.props.issue
     var comments = this.props.issue.comments
-    console.log(comments)
-    if(option == "comments" && !_.isEmpty(comments)) {
+    //console.log(comments)
+    if(option == "comments") {
       var heading = <h4> Comments </h4>
-      var display = comments.map(function(comment){
-        return <CommentBox comment={comment} />
-      })
+      if(!_.isEmpty(comments))
+        var display = comments.map(function(comment){
+          return <CommentBox comment={comment} />
+        })
+      else
+        var display =  <h3> No comments added </h3>
     }
     else if(option == "files")
       var display = <h4> Attachments </h4>
     else
       var display = <h4> Info </h4>
     return (
-      <div>
+      <div className="menu-wrapper">
       {heading}
       {display}
       </div>
