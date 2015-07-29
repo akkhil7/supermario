@@ -125,20 +125,21 @@
 
 .issue-sidebar-menu
   +span-columns(12)
-  border-radius: 5px
-  border: 1px solid #7bbefc
   padding: 8px 5px
   margin-bottom: 20px
 
   i
     +span-columns(4)
     cursor: pointer
+    color: $blue-color
     text-align: center
-    border-right: 1px solid #ccc
+    padding-bottom: 5px
   
   i:last-child
     +omega()
-    border-right: none
 
   i:hover
-    color: $blue-color
+    transform: rotate(360deg)
+    border-bottom: 1px solid $blue-color
+    transition: transform 200ms ease-in, border-bottom 200ms ease-out 
+

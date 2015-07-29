@@ -9,13 +9,15 @@ var Reflux        = require('reflux')
 var issueStore    = require('../store/issueStore.js')
 var CommentBox    = require('./CommentBox.jsx');
 var _             = require('lodash')
+var MenuWrapper   = require('./MenuWrapper.jsx')
 
 var IssueSidebar = React.createClass({
   mixins: [Reflux.connect(issueStore)],
 
   getInitialState: function() {
     return {
-      shouldAnimate: true
+      shouldAnimate: true,
+      activeOption: "info"
       }
   },
   
@@ -53,9 +55,15 @@ var IssueSidebar = React.createClass({
       })
   },
 
-  handleMenuClick: function(){
+  handleMenuClick: function(e){
 
     console.log("I'll be handling you guys")
+    var option = e.target.getAttribute("value");
+    console.log(option);
+    this.setState({
+      activeOption: option,
+      shouldAnimate: false
+    })
   },
 
   layout: function () {
@@ -63,6 +71,7 @@ var IssueSidebar = React.createClass({
     var title = _.capitalize(issue.title)
     var comments = this.props.issue.comments
     var assigned_to = issue.assigned_to.username
+    var option = this.state.activeOption
     if (!_.isEmpty(comments)) {
       var displayComments = comments.map(function(comment){
         return <CommentBox comment={comment} />
@@ -80,9 +89,7 @@ var IssueSidebar = React.createClass({
               <i value="files" className="item fa fa-file-o fa" onClick={this.handleMenuClick}> </i>
               <i value="comments" className="item fa fa-comment-o fa" onClick={this.handleMenuClick}> </i>
             </div>
-            <h4> Comments </h4>
-            {displayComments}
-
+          <MenuWrapper option={option} issue={issue}/>
           <form onSubmit={this.handleSubmit}>
             <input type="text" ref="comment" placeholder={issue.body} />
             <input type="submit" />

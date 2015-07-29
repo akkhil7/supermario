@@ -767,8 +767,6 @@ button, input[type="submit"] {
   display: block;
   margin-right: 2.35765%;
   width: 100%;
-  border-radius: 5px;
-  border: 1px solid #7bbefc;
   padding: 8px 5px;
   margin-bottom: 20px; }
   .issue-sidebar-menu:last-child {
@@ -779,15 +777,17 @@ button, input[type="submit"] {
     margin-right: 2.35765%;
     width: 31.76157%;
     cursor: pointer;
+    color: #0486ff;
     text-align: center;
-    border-right: 1px solid #ccc; }
+    padding-bottom: 5px; }
     .issue-sidebar-menu i:last-child {
       margin-right: 0; }
   .issue-sidebar-menu i:last-child {
-    margin-right: 0;
-    border-right: none; }
+    margin-right: 0; }
   .issue-sidebar-menu i:hover {
-    color: #0486ff; }
+    transform: rotate(360deg);
+    border-bottom: 1px solid #0486ff;
+    transition: transform 200ms ease-in, border-bottom 200ms ease-out; }
 
 /*!
  *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
