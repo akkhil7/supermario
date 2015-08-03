@@ -7,7 +7,11 @@ var CommentBox    = require('./CommentBox.jsx');
 var _             = require('lodash');
 
 var MenuWrapper = React.createClass({
-  
+  handleComment: function(e){
+    e.preventDefault();
+    var input = this.refs.comment.getDOMNode().value
+    this.props.handleComment(input,e);
+  },
   render: function() {
     var option = this.props.option
     var issue = this.props.issue
@@ -15,10 +19,17 @@ var MenuWrapper = React.createClass({
     //console.log(comments)
     if(option == "comments") {
       var heading = <h4> Comments </h4>
-      if(!_.isEmpty(comments))
+      if(!_.isEmpty(comments)) {
         var display = comments.map(function(comment){
           return <CommentBox comment={comment} />
         })
+
+        var input = ( 
+                     <form onSubmit={this.handleComment}>
+                       <input type="text" ref="comment" placeholder={issue.body} />
+                       <input type="submit" />
+                     </form>
+                    ) }
       else
         var display =  <h3> No comments added </h3>
     }
@@ -30,6 +41,7 @@ var MenuWrapper = React.createClass({
       <div className="menu-wrapper">
       {heading}
       {display}
+      {input}
       </div>
     );
   }

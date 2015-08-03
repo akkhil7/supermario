@@ -727,11 +727,11 @@ button, input[type="submit"] {
   transition: border-color 300ms; }
 
 .issue-sidebar-enter {
-  right: -500px;
-  transition: all 1s; }
+  top: -100%;
+  transition: top 0.5s ease-in-out; }
 
 .issue-sidebar-enter-active {
-  right: 0px; }
+  top: 0px; }
 
 .issue-sidebar-leave {
   right: 0px;
@@ -740,6 +740,13 @@ button, input[type="submit"] {
 
 .issue-sidebar-leave-active {
   right: 500px; }
+
+.issue-sidebar-appear {
+  opacity: 0.01; }
+
+.issue-sidebar-appear-active {
+  opacity: 1;
+  transition: opacity 1s ease-in; }
 
 .comment-box-wrapper {
   height: auto;

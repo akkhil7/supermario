@@ -6,6 +6,8 @@ var issueStore = Reflux.createStore({
   listenables: [issuesActions],
   data:{issues: [],
         activeIssue: undefined,
+        shouldAnimate: true,
+        activeOption: "info"
       },
 
   onUpdateIssue: function(issue){

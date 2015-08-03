@@ -14,16 +14,12 @@ var MenuWrapper   = require('./MenuWrapper.jsx')
 var IssueSidebar = React.createClass({
   mixins: [Reflux.connect(issueStore)],
 
-  /*getInitialState: function() {
+  getDefaultProps: function() {
     return {
       //shouldAnimate: true,
       //activeOption: "info"
       }
-  },   
-  /*
-  componentWillMount: function(){
-     this.props.hideIssue()
-     },*/
+      },
 
   
   hideIssue: function(e){
@@ -45,21 +41,15 @@ var IssueSidebar = React.createClass({
          }*/
    
    
-   componentWillUnmount: function(){
-     console.log("unmounting BITCH")
-   },
-
-   componentWillMount: function() {
-     console.log("gonna mount");
-   },
-  /*componentWillReceiveProps: function(nextProps){
-    if(!this.state.shouldAnimate && nextProps.issue != this.props.issue)
-      this.setState({
+  componentWillReceiveProps: function(nextProps){
+    if(nextProps.issue != this.props.issue)
+      {
+        this.setState({
         shouldAnimate: true
-      })
-      console.log(this.state.shouldAnimate);
+        })
+      }
   },
-
+  /*
   componentWillUpdate: function(nextProps, nextState){
     if(!this.state.shouldAnimate && nextProps.issue != this.props.issue)
       this.setState({
@@ -70,12 +60,18 @@ var IssueSidebar = React.createClass({
   },
   */
 
+  componentDidMount: function(){
+    this.setState({})
+  },
+  componentWillUnmount: function(){
+    console.log("Mounting" + this.props.issue.title)
+  },
 
-  handleSubmit: function(e){
+  handleSubmit: function(input, e){
     e.preventDefault();
     var issue = this.props.issue
     var comment = {
-      body: this.refs.comment.getDOMNode().value,
+      body: input,
       issue_id: issue.id
     }
     var issues = this.state.issues
@@ -87,9 +83,9 @@ var IssueSidebar = React.createClass({
       .end(function (err,res) {
         var response = JSON.parse(res.text)
         issue.comments.push(response.comment)
-        /*_this.setState({
+        _this.setState({
           shouldAnimate: false
-          })*/
+          })
         //UPDATES COMPONENT. didUpdate() is invoked.
       })
   },
@@ -99,11 +95,12 @@ var IssueSidebar = React.createClass({
     console.log("I'll be handling you guys")
     var option = e.target.getAttribute("value");
     console.log(option);
-    /*this.setState({
+    this.setState({
       activeOption: option,
       shouldAnimate: false
-      })*/
+      })
   },
+
 
   layout: function () {
     var issue = this.props.issue
@@ -128,11 +125,7 @@ var IssueSidebar = React.createClass({
               <i value="files" className="item fa fa-file-o fa" onClick={this.handleMenuClick}> </i>
               <i value="comments" className="item fa fa-comment-o fa" onClick={this.handleMenuClick}> </i>
             </div>
-          <MenuWrapper option={option} issue={issue}/>
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" ref="comment" placeholder={issue.body} />
-            <input type="submit" />
-          </form>
+          <MenuWrapper handleComment={this.handleSubmit}option={option} issue={issue}/>
         </div>
         <span>Assigned to: @{assigned_to}</span>
       </div>
@@ -141,15 +134,15 @@ var IssueSidebar = React.createClass({
   
   animatedLayout: function () {
     return (
-      <CTG transitionName="issue-sidebar">
+      <CTG transitionName="issue-sidebar" transitionLeave={false}>
         {this.layout()}
       </CTG>
     );
   },
 
   render: function() {
-    // return (this.state.shouldAnimate ? this.animatedLayout() : this.layout())
-     return (this.layout())
+    console.log(this.state.shouldAnimate);
+    return (this.state.shouldAnimate ? this.animatedLayout() : this.layout())
   }
 });
 
