@@ -14,7 +14,7 @@ var MenuWrapper   = require('./MenuWrapper.jsx')
 var IssueSidebar = React.createClass({
   mixins: [Reflux.connect(issueStore)],
 
-  getInitialState: function() {
+  /*getInitialState: function() {
     return {
       //shouldAnimate: true,
       //activeOption: "info"
@@ -149,7 +149,7 @@ var IssueSidebar = React.createClass({
 
   render: function() {
     // return (this.state.shouldAnimate ? this.animatedLayout() : this.layout())
-     return (this.animatedLayout())
+     return (this.layout())
   }
 });
 
