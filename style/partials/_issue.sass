@@ -102,21 +102,18 @@
 
 .issue-sidebar-enter-active
   top: 0px
+  right: 0
   
 .issue-sidebar-leave
-  right: 0px
-  opacity: 0
-  transition: all 1s
+  top: 0px
+  right: 0
+  opacity: 1
 
 .issue-sidebar-leave-active
   right: 500px
+  opacity: 0
+  transition: all 0.5s ease-out
 
-.issue-sidebar-appear
-  opacity: 0.01
-
-.issue-sidebar-appear-active
-  opacity: 1
-  transition: opacity 1s ease-in
   
 .comment-box-wrapper
   height: auto
@@ -157,3 +154,18 @@
     h3
     +span-columns(12)
 
+
+.menu-wrapper-enter
+  margin-left: 100%
+
+.menu-wrapper-enter-active
+  margin-left: 0
+  transition: all 0.5s ease-in
+
+.menu-wrapper-leave
+  margin-left: 0
+
+.menu-wrapper-leave-active
+  margin-right: 100%
+  opacity: 0.01
+  transition: margin-right 0.5s ease-out

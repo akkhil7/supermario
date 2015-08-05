@@ -14,13 +14,6 @@ var MenuWrapper   = require('./MenuWrapper.jsx')
 var IssueSidebar = React.createClass({
   mixins: [Reflux.connect(issueStore)],
 
-  getDefaultProps: function() {
-    return {
-      //shouldAnimate: true,
-      //activeOption: "info"
-      }
-      },
-
   
   hideIssue: function(e){
     this.props.hideIssue(e)
@@ -62,9 +55,10 @@ var IssueSidebar = React.createClass({
 
   componentDidMount: function(){
     this.setState({})
+    console.log("mounted " + this.props.issue.title)
   },
   componentWillUnmount: function(){
-    console.log("Mounting" + this.props.issue.title)
+    console.log("unMounting " + this.props.issue.title)
   },
 
   handleSubmit: function(input, e){
@@ -134,9 +128,7 @@ var IssueSidebar = React.createClass({
   
   animatedLayout: function () {
     return (
-      <CTG transitionName="issue-sidebar" transitionLeave={false}>
-        {this.layout()}
-      </CTG>
+        this.layout()
     );
   },
 

@@ -5,12 +5,24 @@ var Router        = require('react-router');
 var DocumentTitle = require('react-document-title');
 var CommentBox    = require('./CommentBox.jsx');
 var _             = require('lodash');
+var CTG           = React.addons.CSSTransitionGroup
 
 var MenuWrapper = React.createClass({
   handleComment: function(e){
     e.preventDefault();
     var input = this.refs.comment.getDOMNode().value
     this.props.handleComment(input,e);
+  },
+
+  
+  componentDidMount: function(){
+    this.setState({});
+    //console.log("Mounted")
+  },
+
+  componentWillUnmount: function(){
+
+    //console.log("unmounterz")
   },
   render: function() {
     var option = this.props.option
@@ -38,11 +50,13 @@ var MenuWrapper = React.createClass({
     else
       var display = <h4> Info </h4>
     return (
-      <div className="menu-wrapper">
-      {heading}
-      {display}
-      {input}
-      </div>
+      <CTG transitionName="menu-wrapper">
+        <div key={Math.random()} className="menu-wrapper">
+          {heading}
+          {display}
+          {input}
+        </div>
+      </CTG>
     );
   }
 });

@@ -55,6 +55,7 @@ var routes = (
     <Route name="settings" path="/settings" handler={SettingsMain} />
     <Route name="register" path='/register' handler={RegisterMain} />
     <NotFoundRoute name="notfound" handler={ NotFound }/>
+    <Redirect from='issues' to='project' />
   </Route>
 );
 

@@ -15,11 +15,8 @@ var Gravatar      = require('./Gravatar.jsx')
 
 var IssuesMain = React.createClass({
   mixins: [ Router.State, Router.Navigation ],
-  getInitialState: function(){
-    return {
-      
-    }
-  },
+
+  //Redirect to ProjectMain 
 
   render: function() {
     return(

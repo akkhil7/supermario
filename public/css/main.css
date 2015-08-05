@@ -731,22 +731,18 @@ button, input[type="submit"] {
   transition: top 0.5s ease-in-out; }
 
 .issue-sidebar-enter-active {
-  top: 0px; }
+  top: 0px;
+  right: 0; }
 
 .issue-sidebar-leave {
-  right: 0px;
-  opacity: 0;
-  transition: all 1s; }
+  top: 0px;
+  right: 0;
+  opacity: 1; }
 
 .issue-sidebar-leave-active {
-  right: 500px; }
-
-.issue-sidebar-appear {
-  opacity: 0.01; }
-
-.issue-sidebar-appear-active {
-  opacity: 1;
-  transition: opacity 1s ease-in; }
+  right: 500px;
+  opacity: 0;
+  transition: all 0.5s ease-out; }
 
 .comment-box-wrapper {
   height: auto;
@@ -803,6 +799,21 @@ button, input[type="submit"] {
     width: 100%; }
     .issue-sidebar-menu .menu-wrapper:last-child {
       margin-right: 0; }
+
+.menu-wrapper-enter {
+  margin-left: 100%; }
+
+.menu-wrapper-enter-active {
+  margin-left: 0;
+  transition: all 0.5s ease-in; }
+
+.menu-wrapper-leave {
+  margin-left: 0; }
+
+.menu-wrapper-leave-active {
+  margin-right: 100%;
+  opacity: 0.01;
+  transition: margin-right 0.5s ease-out; }
 
 /*!
  *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome

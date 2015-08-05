@@ -155,16 +155,10 @@ addIssue: function(e) {
     var issue = issueBox.props.issue
     var shouldActivate = this.state.shouldActivate
     var _this = this
-    /*if(shouldActivate)
-      { console.log("gonna set shouldActivate to false");
-        this.setState({
-          shouldActivate: false
-        })
-        }*/
-      this.setState({
-        activeIssue: issue,
-        shouldActivate: true
-      })
+    this.setState({
+      activeIssue: issue,
+      shouldActivate: true
+    })
   },
 
   hideIssue: function(e) {
