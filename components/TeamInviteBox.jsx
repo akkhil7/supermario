@@ -102,15 +102,16 @@ var TeamInviteBox= React.createClass({
     */
   render: function() {
     var users = this.state.users
-    if(users.length > 0)
-      var display = users.map(function(user){
-        return <UserBox user={user} />
-      })
+    var display;
+    /* if(users.length > 0)
+        var display = users.map(function(user){
+          return <UserBox user={user} />
+        })*/
     return(
       <div>
         <h2> Add Team Member </h2>
         <hr />
-        <Dropdown onAddUser={this.addUser} />
+        <Dropdown />
         {display}
       </div>
     );

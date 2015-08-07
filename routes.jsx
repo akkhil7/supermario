@@ -32,8 +32,8 @@ var routes = (
     <Route name="projects" path="/projects/" handler={ProjectMain} >
       <DefaultRoute name="projectlist" handler={ProjectList} />
 
-      <Route name="project-wrapper" path=":id/" handler={ProjectWrapper}>
-        <Route name="project" handler={ProjectTemplate}>
+      <Route name="project" path=":id/" handler={ProjectWrapper}>
+        <Route name="issues" path="issues/" handler={ProjectTemplate}>
           <Route name="issue" path=":issue_id/" handler={IssueSidebar} />
         </Route>
       </Route>

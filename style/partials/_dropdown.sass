@@ -1,68 +1,84 @@
 .genesis
+  +span-columns(8)
+  position: relative
+  
+  .gen-input
+    float: left
+
+    input
+      border: none
+      box-shadow: none
+      border-radius: 0
+      background-color: #fcfcfc
+    
+  .user-tag
+    border-radius: 3px
+    color: #0088ff
+    font-size: 14px
+    background: #ffffff
+    padding: 5px
+    margin-right: 5px
+    text-align: center
+    border: solid #0088ff 1px
+    float: left
+    margin-bottom: 10px
+    
+    .close
+      position: absolute
+      top: 0
+      left: 0
+    
+.dropdown
   float: left
   display: block
-  @include span-columns(8 of 8)
-  
-  input
+  margin-right: 3.57866%
+  width: 100%
+  height: auto
+  margin-top: -12px
+  background-color: #ffffff
+  border-color: #ddd
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06)
+  border-width: 1px
+  border-style: solid
+  border-bottom-left-radius: 3px
+  border-bottom-right-radius: 3px
+  font-size: 1em
+
+.dropdown:last-child
+  margin-right: 0
+
+  .item
     float: left
     display: block
     margin-right: 3.57866%
     width: 100%
+    padding-top: 0.5em
+    padding-left: 0.5em
+    padding-right: 0.5em
 
-  input:last-child
+  .item:last-child
     margin-right: 0
 
-  .dropdown
-    float: left
-    display: block
-    margin-right: 3.57866%
-    width: 100%
-    height: auto
-    margin-top: -12px
-    background-color: #ffffff
-    border-color: #ddd
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06)
+  li
     border-width: 1px
-    border-style: solid
-    border-bottom-left-radius: 3px
-    border-bottom-right-radius: 3px
-    font-size: 1em
+    float: left
+    float: left
+    display: block
+    margin-right: 3.57866%
+    width: 61.158%
 
-  .dropdown:last-child
+  li:last-child
     margin-right: 0
 
-    .item
-      float: left
-      display: block
-      margin-right: 3.57866%
-      width: 100%
-      padding-top: 0.5em
-      padding-left: 0.5em
-      padding-right: 0.5em
+  p
+    float: left
+    display: block
+    margin-right: 3.57866%
+    width: 35.26334%
+    float: right
+    text-align: right
+    color: #ddd
 
-    .item:last-child
-      margin-right: 0
-
-    li
-      border-width: 1px
-      float: left
-      float: left
-      display: block
-      margin-right: 3.57866%
-      width: 61.158%
-
-    li:last-child
-      margin-right: 0
-
-    p
-      float: left
-      display: block
-      margin-right: 3.57866%
-      width: 35.26334%
-      float: right
-      text-align: right
-      color: #ddd
-
-    p:last-child
-      margin-right: 0
+  p:last-child
+    margin-right: 0
 

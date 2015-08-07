@@ -27,7 +27,7 @@ var ProjectBox = React.createClass({
 
     return (
         <div className="project-box">
-      <Link to="project" params={{id:project.id}} >
+      <Link to="issues" params={{id:project.id}} >
         <h3>{project.name}</h3>
       </Link>
 

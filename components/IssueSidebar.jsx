@@ -15,7 +15,8 @@ var IssueSidebar = React.createClass({
   mixins: [ Router.State, Router.Navigation, Reflux.connect(issueStore)],
 
   hideIssue: function(e){
-    this.props.hideIssue(e)
+    e.preventDefault();
+    this.transitionTo('issues', {id: this.getParams().id});
   },
 
   /* componentDidUpdate: function(nextProps, nextState){

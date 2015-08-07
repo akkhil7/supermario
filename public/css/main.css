@@ -547,65 +547,81 @@ button, input[type="submit"] {
 .genesis {
   float: left;
   display: block;
+  margin-right: 2.35765%;
+  width: 65.88078%;
+  position: relative; }
+  .genesis:last-child {
+    margin-right: 0; }
+  .genesis .gen-input {
+    float: left; }
+    .genesis .gen-input input {
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
+      background-color: #fcfcfc; }
+  .genesis .user-tag {
+    border-radius: 3px;
+    color: #0088ff;
+    font-size: 14px;
+    background: #ffffff;
+    padding: 5px;
+    margin-right: 5px;
+    text-align: center;
+    border: solid #0088ff 1px;
+    float: left;
+    margin-bottom: 10px; }
+    .genesis .user-tag .close {
+      position: absolute;
+      top: 0;
+      left: 0; }
+
+.dropdown {
   float: left;
   display: block;
   margin-right: 3.57866%;
-  width: 100%; }
-  .genesis:last-child {
-    margin-right: 0; }
-  .genesis input {
-    float: left;
-    display: block;
-    margin-right: 3.57866%;
-    width: 100%; }
-  .genesis input:last-child {
-    margin-right: 0; }
-  .genesis .dropdown {
+  width: 100%;
+  height: auto;
+  margin-top: -12px;
+  background-color: #ffffff;
+  border-color: #ddd;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+  border-width: 1px;
+  border-style: solid;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  font-size: 1em; }
+
+.dropdown:last-child {
+  margin-right: 0; }
+  .dropdown:last-child .item {
     float: left;
     display: block;
     margin-right: 3.57866%;
     width: 100%;
-    height: auto;
-    margin-top: -12px;
-    background-color: #ffffff;
-    border-color: #ddd;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
-    border-width: 1px;
-    border-style: solid;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    font-size: 1em; }
-  .genesis .dropdown:last-child {
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em; }
+  .dropdown:last-child .item:last-child {
     margin-right: 0; }
-    .genesis .dropdown:last-child .item {
-      float: left;
-      display: block;
-      margin-right: 3.57866%;
-      width: 100%;
-      padding-top: 0.5em;
-      padding-left: 0.5em;
-      padding-right: 0.5em; }
-    .genesis .dropdown:last-child .item:last-child {
-      margin-right: 0; }
-    .genesis .dropdown:last-child li {
-      border-width: 1px;
-      float: left;
-      float: left;
-      display: block;
-      margin-right: 3.57866%;
-      width: 61.158%; }
-    .genesis .dropdown:last-child li:last-child {
-      margin-right: 0; }
-    .genesis .dropdown:last-child p {
-      float: left;
-      display: block;
-      margin-right: 3.57866%;
-      width: 35.26334%;
-      float: right;
-      text-align: right;
-      color: #ddd; }
-    .genesis .dropdown:last-child p:last-child {
-      margin-right: 0; }
+  .dropdown:last-child li {
+    border-width: 1px;
+    float: left;
+    float: left;
+    display: block;
+    margin-right: 3.57866%;
+    width: 61.158%; }
+  .dropdown:last-child li:last-child {
+    margin-right: 0; }
+  .dropdown:last-child p {
+    float: left;
+    display: block;
+    margin-right: 3.57866%;
+    width: 35.26334%;
+    float: right;
+    text-align: right;
+    color: #ddd; }
+  .dropdown:last-child p:last-child {
+    margin-right: 0; }
 
 .low {
   border-bottom-color: #56C455; }
