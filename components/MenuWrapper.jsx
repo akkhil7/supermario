@@ -41,22 +41,26 @@ var MenuWrapper = React.createClass({
                        <input type="text" ref="comment" placeholder={issue.body} />
                        <input type="submit" />
                      </form>
-                    ) }
+                    ) 
+      }
       else
         var display =  <h3> No comments added </h3>
     }
     else if(option == "files")
       var display = <h4> Attachments </h4>
     else
-      var display = <h4> Info </h4>
+      var display =(<div> 
+        <h4> Info </h4>
+        <span>Assigned to: @{issue.assigned_to.username}</span>
+      </div>
+                   )                    
+    
     return (
-      <CTG transitionName="menu-wrapper">
-        <div key={Math.random()} className="menu-wrapper">
+        <div className="menu-wrapper">
           {heading}
           {display}
           {input}
         </div>
-      </CTG>
     );
   }
 });

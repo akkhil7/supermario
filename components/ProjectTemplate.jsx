@@ -194,13 +194,11 @@ addIssue: function(e) {
                       })
       }
     
-    if(shouldActivate)
-      showIssueSidebar = <IssueSidebar hideIssue={this.hideIssue} 
-                          issue={activeIssue}/>
     return(
       <div className="project-template">
+        
         <h2>{name}</h2>
-        {showIssueSidebar}
+        
         <div className="project-issues">
           <h3> Issues </h3>
           <hr />
@@ -210,8 +208,8 @@ addIssue: function(e) {
             <input type="submit" />
           </form>
         </div>
-
-     </div>
+      <RouteHandler />
+      </div>
     )
   }       
 })

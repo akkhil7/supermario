@@ -1,6 +1,7 @@
 var Reflux = require('reflux');
 var Request = require('superagent');
 var issuesActions = require('../actions/issuesActions.js');
+var _  = require('lodash');
 
 var issueStore = Reflux.createStore({
   listenables: [issuesActions],
@@ -21,6 +22,7 @@ var issueStore = Reflux.createStore({
       _this.trigger(_this.data)
     })
     },
+    
   onAddIssue: function(issue){
     console.log(this.data)
     var _this = this
@@ -32,11 +34,22 @@ var issueStore = Reflux.createStore({
       _this.trigger(_this.data)
     })
   },
+
+  onFindIssue: function(id){
+    
+  var issues = this.data.issues;
+  var issue = _.filter(issues, function(issue) {
+    return issue.id == id
+  });
+  var newIssue = _.first(issue);
+  return newIssue;
+  
+  },
   
   init: function(){
   
     var _this = this
-    console.log("init was called")
+   // console.log("init was called")
     Request.get("http://localhost:3000/issues/", function(res) {
       var response = JSON.parse(res.text);
       var issues = response.issues;

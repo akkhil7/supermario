@@ -12,9 +12,8 @@ var _             = require('lodash')
 var MenuWrapper   = require('./MenuWrapper.jsx')
 
 var IssueSidebar = React.createClass({
-  mixins: [Reflux.connect(issueStore)],
+  mixins: [ Router.State, Router.Navigation, Reflux.connect(issueStore)],
 
-  
   hideIssue: function(e){
     this.props.hideIssue(e)
   },
@@ -54,16 +53,15 @@ var IssueSidebar = React.createClass({
   */
 
   componentDidMount: function(){
-    this.setState({})
-    console.log("mounted " + this.props.issue.title)
+    console.log("mounted ");
   },
   componentWillUnmount: function(){
-    console.log("unMounting " + this.props.issue.title)
+    console.log("unMounting ");
   },
 
   handleSubmit: function(input, e){
     e.preventDefault();
-    var issue = this.props.issue
+    var issue = issueStore.onFindIssue(this.getParams().issue_id);
     var comment = {
       body: input,
       issue_id: issue.id
@@ -97,19 +95,21 @@ var IssueSidebar = React.createClass({
 
 
   layout: function () {
-    var issue = this.props.issue
+    var issue = issueStore.onFindIssue(this.getParams().issue_id);
+    console.log(issue);
     var title = _.capitalize(issue.title)
-    var comments = this.props.issue.comments
+    var comments = issue.comments
     var assigned_to = issue.assigned_to.username
     var option = this.state.activeOption
+    
     if (!_.isEmpty(comments)) {
       var displayComments = comments.map(function(comment){
         return <CommentBox comment={comment} />
       })
     }
-
+    
     return (
-        <div key={Math.random()} className="issue-sidebar">
+        <div className="issue-sidebar">
           <a href="#" onClick={this.hideIssue} className="close">
           <i className="fa fa-times fa-2x"> </i> </a>
           <h2>{title}</h2>
@@ -121,7 +121,6 @@ var IssueSidebar = React.createClass({
             </div>
           <MenuWrapper handleComment={this.handleSubmit}option={option} issue={issue}/>
         </div>
-        <span>Assigned to: @{assigned_to}</span>
       </div>
     )
   },

@@ -17,8 +17,11 @@ var IssuesMain = React.createClass({
   mixins: [ Router.State, Router.Navigation ],
 
   //Redirect to ProjectMain 
-
+  componentWillMount: function(){
+    this.goBack();
+  },
   render: function() {
+    console.log(Router);
     return(
       <h1> This is the page of ALL Issue (Issues MAIN) </h1>
     )

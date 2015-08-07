@@ -14,10 +14,13 @@ var TeamIniviteBox = require('./TeamInviteBox.jsx')
 //import components
 
 var ProjectWrapper = React.createClass({
+  mixins: [ Router.State, Router.Navigation],
+
   render: function() {
+    console.log(Router);
     return(
       <div className="project-wrapper">
-        <RouteHandler/>
+        <RouteHandler />
       </div>
       );
   }

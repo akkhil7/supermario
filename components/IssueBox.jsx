@@ -4,8 +4,11 @@ var React         = require('react');
 var Router        = require('react-router');
 var DocumentTitle = require('react-document-title');
 var _             = require('lodash')
+var Link          = Router.Link;
 
 var IssueBox = React.createClass({
+mixins: [ Router.State, Router.Navigation],
+
 getInitialState: function() {
   return {
     togglePriority: false,
@@ -62,9 +65,12 @@ render: function() {
     var showPriority = <a className="priority" href="#" onClick={this.handlePriority}>{priority}</a>
   return (
     <div className={issueClassName}>
-      <a href="#" onClick={this.handleClick}>{issue.title}</a>
-                    {showPriority}
-            </div>
+      <Link to='issue' params={{issue_id: issue.id,
+        id: this.getParams().id}}>
+        {issue.title}
+      </Link>
+      {showPriority}
+    </div>
     );
   }
 });
