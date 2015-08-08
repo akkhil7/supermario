@@ -11,19 +11,21 @@ var Request       = require('superagent')
 var _             = require('lodash')
 
 var RegisterMain = React.createClass({
-  addUser: function() {
+  addUser: function(e) {
+    e.preventDefault();
     var url = "http://localhost:3000/users";
     var user = {
       username: this.refs.username.getDOMNode().value,
       password: this.refs.password.getDOMNode().value,
-      email: this.refs.email.getDOMNode().value
+      email: this.refs.email.getDOMNode().value,
+      first_name: this.refs.firstname.getDOMNode().value,
+      last_name: this.refs.lastname.getDOMNode().value
     };
 
     Request.post(url)
     .send({user: user})
     .end(function (err, res){
-      alert(res);
-      alert(err);
+      console.log(res);
     });
   },
 
@@ -36,9 +38,14 @@ var RegisterMain = React.createClass({
       <form>
       <input type="text" placeholder="Enter your username" ref="username" />
       <label> Password </label>
-      <input type="password" placeholder="Enter your username" ref="password" />
+      <input type="password" placeholder="Enter your password" ref="password" />
       <label> Email </label>
-      <input type="text" placeholder="Enter your username" ref="email" />
+      <input type="text" placeholder="Enter your email" ref="email" />
+      <label> First Name </label>
+      <input type="text" placeholder="Enter your first name" ref="firstname" />
+      <label> Last Name </label>
+      <input type="text" placeholder="Enter your last name" ref="lastname" />
+      
       <button onClick={this.addUser}> Submit </button>
       </form>
       </div>

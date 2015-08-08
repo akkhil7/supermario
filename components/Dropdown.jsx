@@ -6,6 +6,8 @@ var DocumentTitle = require('react-document-title');
 var DropdownList  = require('./DropdownList.jsx');
 var Request       = require('superagent');
 var _             = require('lodash');
+require("string_score");
+
 
 var Dropdown = React.createClass({
 
@@ -64,9 +66,26 @@ findMatch: function(event) {
       if(_.includes(user.username, value) || _.includes(user.email, value))
         temp.push(user);
     }
-    this.setState({
-      results: temp
-    })
+
+  /*STRING SCORE*/
+  for(var i=0;i<temp.length-1;i++)
+    {
+      for(var j=0;j<temp.length-1-i;j++)
+        {
+          if(temp[j].username.score(value) < temp[j+1].username.score(value))
+            {
+              var t = temp[j];
+              temp[j] = temp[j+1];
+              temp[j+1] = t;
+            }
+        }
+     }
+
+     temp.length = 5;
+     
+  this.setState({
+    results: temp
+  })
   },
 
   handleClick: function(item,e){
@@ -107,8 +126,9 @@ findMatch: function(event) {
     var team = {
       user_ids: ids
     }
+    //must insert to current_user's team.
     console.log(team)
-    Request.post("http://localhost:3000/teams/")
+    Request.put("http://localhost:3000/teams/")
     .send({team:team})
     .end((function(res,err){
       console.log(err)
