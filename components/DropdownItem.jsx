@@ -6,8 +6,9 @@ var DocumentTitle = require('react-document-title');
 
 var DropdownItem = React.createClass({
 
-  handleClick: function(){
-    this.props.onAddUser(this)
+  handleClick: function(e){
+    e.preventDefault();
+    this.props.onAddUser(this,e)
   },
 
   render: function(){

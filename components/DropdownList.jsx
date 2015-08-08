@@ -7,14 +7,13 @@ var DropdownItem  = require('./DropdownItem.jsx');
 
 var DropdownList = React.createClass({
 
-  handleClick: function(item){
-    this.props.onAddUser(item)
+  handleClick: function(item,e){
+    this.props.onAddUser(item,e)
   },
 
   render: function() {
     var status = this.props.status
     var results = this.props.results
-    console.log(results)
     if(status)
       { if(results.length > 0)
         { var _this = this

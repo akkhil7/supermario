@@ -69,10 +69,9 @@ findMatch: function(event) {
     })
   },
 
-  handleClick: function(item){
-    //this.props.onAddUser(item)
+  handleClick: function(item,e){
     var added = this.state.added;
-    console.log("wow");
+    e.preventDefault();
     added.push(item.props.user);
     this.setState({
       added: added,
@@ -82,25 +81,65 @@ findMatch: function(event) {
     document.getElementById('input').value = ""
     
   },
-  
+
+  changeFocus: function(e) {
+    document.getElementById('input').focus();
+  },
+
+  removeTag: function(e) {
+
+    var added = this.state.added;
+    var id= e.target.getAttribute('data');
+    var newAdded = _.remove(added, function(user) {
+      return user.id == id
+    })
+    this.setState({
+      added: added
+    })
+  },
+
+  addToTeam: function(){
+
+    var added = this.state.added
+    var ids = added.map(function(user){
+      return user.id
+    })
+    var team = {
+      user_ids: ids
+    }
+    console.log(team)
+    Request.post("http://localhost:3000/teams/")
+    .send({team:team})
+    .end((function(res,err){
+      console.log(err)
+    }))
+  },
   render: function() {
     var results = this.state.results
     var status = this.state.status
     var value = this.state.value
     var added = this.state.added
-    console.log(added)
+    var _this = this
     var userLabel = added.map(function(user){
-      return (<div className="user-tag">{user.username}</div>)
+      return (<div className="user-tag"><i data={user.id} onClick={_this.removeTag} className="fa fa-times fa-lg close"> </i> @{user.username}</div>)
     })
-    var tag = document.getElementsByClassName('tags')[0]
+    if(status)
+      var display =  <DropdownList onAddUser={this.handleClick} status={status} results={results}/>
+
+    if(!_.isEmpty(added))
+      var submitbtn = <button onClick={this.addToTeam} className="submit-btn">Add Member</button>
+    
     return (
-      <div className="genesis">
+      <div>
+      <div className="genesis" onClick={this.changeFocus}>
         <div className="tags">{userLabel}</div>
         <div className="gen-input">
           <input type="text" id="input" placeholder="enter something" autoComplete="off" onKeyUp={this.findMatch} />
         </div>
-        <DropdownList onAddUser={this.handleClick} status={status} results={results}/>
       </div>
+      {display}
+      {submitbtn}
+    </div>
       );
   }
 });

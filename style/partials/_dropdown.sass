@@ -1,34 +1,52 @@
 .genesis
-  +span-columns(8)
+  +span-columns(12)
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06)
   position: relative
+  border: 1px solid #DDD
+  border-radius: 3px
+  background: #ffffff
+  padding-top: 10px
+  padding-left: 10px
+  cursor: text
   
   .gen-input
     float: left
+    height: 37px
 
     input
       border: none
       box-shadow: none
       border-radius: 0
-      background-color: #fcfcfc
+      background-color: #ffffff
     
   .user-tag
     border-radius: 3px
+    cursor: initial
     color: #0088ff
-    font-size: 14px
+    font-size: 16px
     background: #ffffff
-    padding: 5px
+    padding: 3px 25px 3px 20px
     margin-right: 5px
     text-align: center
     border: solid #0088ff 1px
     float: left
     margin-bottom: 10px
+    position: relative
     
     .close
       position: absolute
-      top: 0
-      left: 0
+      cursor: pointer
+      font-size: 15px
+      top: 10px
+      right: 5px
+      color: #e1e1e1
+      
+    .close:hover
+      color: #0088ff
+      transition: color 200ms ease-in
     
 .dropdown
+  padding-top: 10px
   float: left
   display: block
   margin-right: 3.57866%
@@ -44,41 +62,35 @@
   border-bottom-right-radius: 3px
   font-size: 1em
 
-.dropdown:last-child
-  margin-right: 0
-
   .item
     float: left
-    display: block
-    margin-right: 3.57866%
-    width: 100%
-    padding-top: 0.5em
-    padding-left: 0.5em
-    padding-right: 0.5em
+    +span-columns(12)
+    padding: 0.5em 0.5em 0 0.5em
+
+  .item:hover
+    background-color: #fafafa
 
   .item:last-child
     margin-right: 0
 
+
   li
     border-width: 1px
     float: left
-    float: left
-    display: block
-    margin-right: 3.57866%
-    width: 61.158%
-
+    +span-columns(8)
+    
   li:last-child
     margin-right: 0
 
   p
-    float: left
-    display: block
-    margin-right: 3.57866%
-    width: 35.26334%
     float: right
+    +span-columns(4)
     text-align: right
     color: #ddd
 
   p:last-child
     margin-right: 0
 
+.submit-btn
+  margin-top: 20px
+  +span-columns(12)

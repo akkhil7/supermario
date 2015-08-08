@@ -1,34 +1,33 @@
 $primarycolor: #3c444d
 .team
   padding-top: 20px
-  +outer-container
+  +span-columns(10)
   span
     font-size: 0.9em
   .teamlist
-    +span-columns(8 of 8)
+    +span-columns(12)
     h2
-      +span-columns(2 of 8)
+      +span-columns(4)
     button
-      +span-columns(2 of 8)
-      +shift(2)
+      +span-columns(3)
       +omega()
       float: right
       background-color: #56C455
     button:hover
       background-color: #379436
     hr
-      +span-columns(8 of 8)
+      +span-columns(12)
 
   .teaminvite
     padding: 5em 0
-    +span-columns(8 of 8)
+    +span-columns(8)
     .invite
       button
-        +span-columns(3 of 8)
+        +span-columns(3)
         +shift(2.5)
       input
         margin-top: 20px
-        +span-columns(5 of 8)
+        +span-columns(5)
         +shift(1.5)
       h3
         text-align: center
@@ -38,13 +37,13 @@ $primarycolor: #3c444d
         text-align: center
         
       .invitebox
-        +span-columns(3 of 8)
+        +span-columns(3)
         +shift(2)
         
 .user-box-wrapper
   margin-top: -5em
   .user-box
-    +span-columns(2 of 8)
+    +span-columns(2)
     border-radius: 3px
     background-color: #f3f3f3
     padding: 5px 0
@@ -56,11 +55,11 @@ $primarycolor: #3c444d
       text-align: center
       color: #1784fe
     button
-      +span-columns(1.5 of 2)
+      +span-columns(1.5)
       +shift(0.25)
       margin-bottom: 10px
     .gravatar
-      +span-columns(2 of 2)
+      +span-columns(2)
       text-align: center
       padding: 10px 0 10px 0
       img

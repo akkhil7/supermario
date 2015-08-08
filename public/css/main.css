@@ -406,35 +406,33 @@ button, input[type="submit"] {
 
 .team {
   padding-top: 20px;
-  max-width: 68em;
-  margin-left: auto;
-  margin-right: auto; }
-  .team::after {
-    clear: both;
-    content: "";
-    display: table; }
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 82.94039%; }
+  .team:last-child {
+    margin-right: 0; }
   .team span {
     font-size: 0.9em; }
   .team .teamlist {
     float: left;
     display: block;
-    margin-right: 3.57866%;
+    margin-right: 2.35765%;
     width: 100%; }
     .team .teamlist:last-child {
       margin-right: 0; }
     .team .teamlist h2 {
       float: left;
       display: block;
-      margin-right: 3.57866%;
-      width: 22.316%; }
+      margin-right: 2.35765%;
+      width: 31.76157%; }
       .team .teamlist h2:last-child {
         margin-right: 0; }
     .team .teamlist button {
       float: left;
       display: block;
-      margin-right: 3.57866%;
-      width: 22.316%;
-      margin-left: 25.89467%;
+      margin-right: 2.35765%;
+      width: 23.23176%;
       margin-right: 0;
       float: right;
       background-color: #56C455; }
@@ -445,7 +443,7 @@ button, input[type="submit"] {
     .team .teamlist hr {
       float: left;
       display: block;
-      margin-right: 3.57866%;
+      margin-right: 2.35765%;
       width: 100%; }
       .team .teamlist hr:last-child {
         margin-right: 0; }
@@ -453,25 +451,25 @@ button, input[type="submit"] {
     padding: 5em 0;
     float: left;
     display: block;
-    margin-right: 3.57866%;
-    width: 100%; }
+    margin-right: 2.35765%;
+    width: 65.88078%; }
     .team .teaminvite:last-child {
       margin-right: 0; }
     .team .teaminvite .invite button {
       float: left;
       display: block;
-      margin-right: 3.57866%;
-      width: 35.26334%;
-      margin-left: 32.36833%; }
+      margin-right: 2.35765%;
+      width: 23.23176%;
+      margin-left: 21.32451%; }
       .team .teaminvite .invite button:last-child {
         margin-right: 0; }
     .team .teaminvite .invite input {
       margin-top: 20px;
       float: left;
       display: block;
-      margin-right: 3.57866%;
-      width: 61.158%;
-      margin-left: 19.421%; }
+      margin-right: 2.35765%;
+      width: 40.29137%;
+      margin-left: 12.79471%; }
       .team .teaminvite .invite input:last-child {
         margin-right: 0; }
     .team .teaminvite .invite h3 {
@@ -483,9 +481,9 @@ button, input[type="submit"] {
     .team .teaminvite .invite .invitebox {
       float: left;
       display: block;
-      margin-right: 3.57866%;
-      width: 35.26334%;
-      margin-left: 25.89467%; }
+      margin-right: 2.35765%;
+      width: 23.23176%;
+      margin-left: 17.05961%; }
       .team .teaminvite .invite .invitebox:last-child {
         margin-right: 0; }
 
@@ -494,8 +492,8 @@ button, input[type="submit"] {
   .user-box-wrapper .user-box {
     float: left;
     display: block;
-    margin-right: 3.57866%;
-    width: 22.316%;
+    margin-right: 2.35765%;
+    width: 14.70196%;
     border-radius: 3px;
     background-color: #f3f3f3;
     padding: 5px 0;
@@ -511,17 +509,17 @@ button, input[type="submit"] {
     .user-box-wrapper .user-box button {
       float: left;
       display: block;
-      margin-right: 16.03631%;
-      width: 70.99092%;
-      margin-left: 14.50454%;
+      margin-right: 2.35765%;
+      width: 10.43705%;
+      margin-left: 2.13245%;
       margin-bottom: 10px; }
       .user-box-wrapper .user-box button:last-child {
         margin-right: 0; }
     .user-box-wrapper .user-box .gravatar {
       float: left;
       display: block;
-      margin-right: 16.03631%;
-      width: 100%;
+      margin-right: 2.35765%;
+      width: 14.70196%;
       text-align: center;
       padding: 10px 0 10px 0; }
       .user-box-wrapper .user-box .gravatar:last-child {
@@ -548,34 +546,51 @@ button, input[type="submit"] {
   float: left;
   display: block;
   margin-right: 2.35765%;
-  width: 65.88078%;
-  position: relative; }
+  width: 100%;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
+  position: relative;
+  border: 1px solid #DDD;
+  border-radius: 3px;
+  background: #ffffff;
+  padding-top: 10px;
+  padding-left: 10px;
+  cursor: text; }
   .genesis:last-child {
     margin-right: 0; }
   .genesis .gen-input {
-    float: left; }
+    float: left;
+    height: 37px; }
     .genesis .gen-input input {
       border: none;
       box-shadow: none;
       border-radius: 0;
-      background-color: #fcfcfc; }
+      background-color: #ffffff; }
   .genesis .user-tag {
     border-radius: 3px;
+    cursor: initial;
     color: #0088ff;
-    font-size: 14px;
+    font-size: 16px;
     background: #ffffff;
-    padding: 5px;
+    padding: 3px 25px 3px 20px;
     margin-right: 5px;
     text-align: center;
     border: solid #0088ff 1px;
     float: left;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    position: relative; }
     .genesis .user-tag .close {
       position: absolute;
-      top: 0;
-      left: 0; }
+      cursor: pointer;
+      font-size: 15px;
+      top: 10px;
+      right: 5px;
+      color: #e1e1e1; }
+    .genesis .user-tag .close:hover {
+      color: #0088ff;
+      transition: color 200ms ease-in; }
 
 .dropdown {
+  padding-top: 10px;
   float: left;
   display: block;
   margin-right: 3.57866%;
@@ -590,37 +605,50 @@ button, input[type="submit"] {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   font-size: 1em; }
-
-.dropdown:last-child {
-  margin-right: 0; }
-  .dropdown:last-child .item {
+  .dropdown .item {
+    float: left;
     float: left;
     display: block;
-    margin-right: 3.57866%;
+    margin-right: 2.35765%;
     width: 100%;
-    padding-top: 0.5em;
-    padding-left: 0.5em;
-    padding-right: 0.5em; }
-  .dropdown:last-child .item:last-child {
+    padding: 0.5em 0.5em 0 0.5em; }
+    .dropdown .item:last-child {
+      margin-right: 0; }
+  .dropdown .item:hover {
+    background-color: #fafafa; }
+  .dropdown .item:last-child {
     margin-right: 0; }
-  .dropdown:last-child li {
+  .dropdown li {
     border-width: 1px;
     float: left;
     float: left;
     display: block;
-    margin-right: 3.57866%;
-    width: 61.158%; }
-  .dropdown:last-child li:last-child {
+    margin-right: 2.35765%;
+    width: 65.88078%; }
+    .dropdown li:last-child {
+      margin-right: 0; }
+  .dropdown li:last-child {
     margin-right: 0; }
-  .dropdown:last-child p {
+  .dropdown p {
+    float: right;
     float: left;
     display: block;
-    margin-right: 3.57866%;
-    width: 35.26334%;
-    float: right;
+    margin-right: 2.35765%;
+    width: 31.76157%;
     text-align: right;
     color: #ddd; }
-  .dropdown:last-child p:last-child {
+    .dropdown p:last-child {
+      margin-right: 0; }
+  .dropdown p:last-child {
+    margin-right: 0; }
+
+.submit-btn {
+  margin-top: 20px;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%; }
+  .submit-btn:last-child {
     margin-right: 0; }
 
 .low {
