@@ -8,7 +8,10 @@ var Request       = require('superagent');
 var _             = require('lodash');
 require("string_score");
 
-
+//DATA - ALL USERS
+//RESULTS - STORES MATCHING RESULTS
+//STATUS - WHETHER LIST SHOULD BE ACTIVE || NOT
+//ADDED - ARRAY OF TAGS ADDED
 var Dropdown = React.createClass({
 
 getInitialState: function() {
@@ -36,7 +39,6 @@ componentDidMount: function(){
 },
 
 findMatch: function(event) {
-  console.log(event.target.value)
 
   this.setState({
     results: []
@@ -45,6 +47,7 @@ findMatch: function(event) {
   var value = event.target.value
   var _this = this
   var status = this.state.status
+  
   if(value.length != 0)
     {
       this.setState({
@@ -59,7 +62,7 @@ findMatch: function(event) {
       }
       /* variables initilization */
   var results = this.state.results
-  var temp = []
+  var temp = [];
   var data = this.state.data;
   for(var i=0;i<data.length;i++)
     { var user=data[i];
@@ -73,15 +76,13 @@ findMatch: function(event) {
       for(var j=0;j<temp.length-1-i;j++)
         {
           if(temp[j].username.score(value) < temp[j+1].username.score(value))
-            {
-              var t = temp[j];
+            {               var t = temp[j];
               temp[j] = temp[j+1];
               temp[j+1] = t;
             }
         }
      }
 
-     temp.length = 5;
      
   this.setState({
     results: temp

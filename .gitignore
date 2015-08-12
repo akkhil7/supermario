@@ -1,1 +1,4 @@
 node_modules/
+style/base
+style/bourbon
+style/neat
