@@ -84,7 +84,7 @@ var IssueSidebar = React.createClass({
   },
 
   handleMenuClick: function(e){
-
+    console.log('something hi');
     console.log("I'll be handling you guys")
     var option = e.target.getAttribute("value");
     console.log(option);
@@ -114,15 +114,13 @@ var IssueSidebar = React.createClass({
           <a href="#" onClick={this.hideIssue} className="close">
           <i className="fa fa-times fa-2x"> </i> </a>
           <h2>{title}</h2>
-          <div className="issue-sidebar-desc">
-            <div className="issue-sidebar-menu">
-              <i value="info" className="item fa fa-info fa" onClick={this.handleMenuClick}> </i>
-              <i value="files" className="item fa fa-file-o fa" onClick={this.handleMenuClick}> </i>
-              <i value="comments" className="item fa fa-comment-o fa" onClick={this.handleMenuClick}> </i>
-            </div>
+          <div className="issue-sidebar-menu">
+            <i value="info" className="item fa fa-info fa" onClick={this.handleMenuClick}> </i>
+            <i value="files" className="item fa fa-file-o fa" onClick={this.handleMenuClick}> </i>
+            <i value="comments" className="item fa fa-comment-o fa" onClick={this.handleMenuClick}> </i>
+          </div>
           <MenuWrapper handleComment={this.handleSubmit}option={option} issue={issue}/>
         </div>
-      </div>
     )
   },
   
@@ -133,7 +131,6 @@ var IssueSidebar = React.createClass({
   },
 
   render: function() {
-    console.log(this.state.shouldAnimate);
     return (this.state.shouldAnimate ? this.animatedLayout() : this.layout())
   }
 });

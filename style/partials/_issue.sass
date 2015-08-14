@@ -38,7 +38,6 @@
       padding: 0 5px
       height: auto
       +omega()
-      
       +reset-layout-direction
       a
         +span-columns(4)
@@ -76,10 +75,8 @@
     transition: color 300ms
 
   h4
-    +span-columns(8)
+    +span-columns(12)
     font-weight: 400
-
-.issue-sidebar-desc
 
   input[type="text"]
     border: none
@@ -150,22 +147,10 @@
     border-bottom: 1px solid $blue-color
 
   
-  .menu-wrapper
-    h3
+.menu-wrapper
+  h3
     +span-columns(12)
 
-
-.menu-wrapper-enter
-  margin-left: 100%
-
-.menu-wrapper-enter-active
-  margin-left: 0
-  transition: all 0.5s ease-in
-
-.menu-wrapper-leave
-  margin-left: 0
-
-.menu-wrapper-leave-active
-  margin-right: 100%
-  opacity: 0.01
-  transition: margin-right 0.5s ease-out
+  h4
+    +span-columns(12)
+ 

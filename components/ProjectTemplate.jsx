@@ -196,7 +196,7 @@ addIssue: function(e) {
     
     return(
       <div className="project-template">
-        
+        <h2> pls woadrsdsdask </h2>
         <h2>{name}</h2>
         
         <div className="project-issues">

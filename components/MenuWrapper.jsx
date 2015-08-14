@@ -24,6 +24,11 @@ var MenuWrapper = React.createClass({
 
     //console.log("unmounterz")
   },
+
+  logChange: function() {
+    console.log("Selected: " + val);
+    
+  },
   render: function() {
     var option = this.props.option
     var issue = this.props.issue
@@ -47,13 +52,12 @@ var MenuWrapper = React.createClass({
         var display =  <h3> No comments added </h3>
     }
     else if(option == "files")
-      var display = <h4> Attachments </h4>
+      var heading = <h4> Attachments </h4>
     else
-      var display =(<div> 
-        <h4> Info </h4>
-        <span>Assigned to: @{issue.assigned_to.username}</span>
-      </div>
-                   )                    
+      var heading = <h4> Info </h4>
+    var display =(
+      <h2> I love tasdasdasdasds </h2>
+       )                    
     
     return (
         <div className="menu-wrapper">
